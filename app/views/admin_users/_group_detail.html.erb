@@ -1,0 +1,28 @@
+<table class="tlist" width="100%">
+  <tr>
+    <th>group name</th>
+    <td><%= @group.name %></td>
+    <th>group memo</th>
+    <td><%= @group.memo %></td>
+  </tr>
+</table>
+<% if @users.blank? %>
+    <tr>
+      <td colspan="11" class="ac">該当するデータが見つかりません。</td>
+    </tr>
+<% else %>
+    <% @users.each do |user| %>
+        <div>
+          <% if user.photo_path.present? %>
+              <div style="float: left;"><%= image_tag(user.photo_path) %></div>
+          <% else %>
+              <%= '' %>
+          <% end %>
+          <h2 align="left"><%= user.name %><%= "(#{user.login})" %></h2>
+
+          <p>邮箱：<%= user.email %></p>
+
+          <h3></h3>
+        </div>
+    <% end %>
+<% end %>

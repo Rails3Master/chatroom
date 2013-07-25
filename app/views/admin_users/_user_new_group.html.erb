@@ -1,0 +1,29 @@
+<p align="center"><%= error_messages_for :group %></p>
+<% form_for :group, :url => {:controller => "admin/user", :action => 'user_new_group'} do |g| %>
+
+    <div class="pgtitle clearfix">
+      <h2 class="h2_title">グループ登録</h2>
+
+      <div class="btnbar">
+        <%= submit_tag '登録' %>
+      </div>
+    </div>
+    <h3 id="user_detail">グループ情報</h3>
+    <p class="mb10">この画面にて、グループ編集。</p>
+    <table class="tform mb10" width="100%">
+      <tr>
+        <th>name<span class="star">*</span></th>
+        <td><%= g.text_field :name, :size => 80 %></td>
+      </tr>
+      <tr>
+        <th>memo<span class="star">*</span></th>
+        <td><%= g.text_area :memo, :cols => 100, :rows => 10 %>
+        </td>
+      </tr>
+    </table>
+    <%= render :partial => 'group_info_form' %>
+    <%= hidden_field_tag "group[user_id]", @user.id %>
+<% end %>
+<script type="text/javascript" language="javascript">
+    $('show_user').style.display = '';
+</script>

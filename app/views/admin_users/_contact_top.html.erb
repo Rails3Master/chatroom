@@ -1,0 +1,22 @@
+<div class="mainNav">
+  <div id="show_contact" class="items" style="display:none;">
+    <ul class="manager clearfix">
+      <li><%= link_to_remote("连絡先の一覧",
+                             {:update => 'tabWrap',
+                              :url => {:id => params[:id], :tab => 'contact'},
+                              :loading => "show_ajax(this,'#{params[:id]}','contact')"},
+                             :id => 'nav_contact') %></li>
+      <li><%= link_to_remote("连絡先の追加",
+                             {:update => 'tabWrap',
+                              :url => {:id => params[:id], :tab => 'add_contact'},
+                              :loading => "show_ajax(this,'#{params[:id]}','add_contact')"},
+                             :id => 'add_contact') %></li>
+      <li><%= link_to_remote("ニュースを検証する(#{@number})",
+                             {:update => 'tabWrap',
+                              :url => {:id => params[:id], :tab => 'contact_confirmation_user'},
+                              :loading => "show_ajax(this,'#{params[:id]}','contact_confirmation_user')"},
+                             :id => 'contact_confirmation_user') %></li>
+    </ul>
+  </div>
+</div>
+<%= render :partial => "layouts/messages" %>

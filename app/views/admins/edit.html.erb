@@ -1,0 +1,19 @@
+<iframe name="iframe" style="display:none;" width = "800px" height="400px">
+</iframe>
+
+<div class="pgtitle">
+  <h2 class="h2_title">企業管理者編集</h2>
+    <div class="btnbar">
+      <%= button_to_function '保存', "this.form.action='#{url_for :action => 'edit'}';this.form.target='_self';this.form.submit()"%>
+     &nbsp;
+      <input type="button" value="戻る" onclick="location.href='/admin/admin/index'"/>
+    </div>
+    <hr class="cb" />
+  </div>
+<%= form_for :admin, :url =>{ :action => "edit",:id=>@admin.id}, :html => { :multipart => true, :target => 'iframe'} do |f|  %>
+    <%= f.error_messages  %>
+    <%= render :partial => 'form', :locals => {f:f} %>
+<%end%>
+<script type="text/javascript" language="javascript">
+    $('#show_company').attr('style','');
+</script>

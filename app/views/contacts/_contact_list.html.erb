@@ -1,0 +1,48 @@
+<% if @condition.present? && @condition!=""%>
+    <% if @users.present?%>
+        <ul id="_contactWindowList" class="contactList">
+          <% @users.each do |user|%>
+            <li class="_contactList subContentShadow adminDetailSelected" data-aid="<%=user.id%>">
+              <div class="_contactPanel" data-aid="<%=user.id%>"><div class="profileImgToolTip">
+                <div class="profileTooltipAvater">
+                  <% if user.photo_path.present? %>
+                      <%= image_tag(user.photo_path) %>
+                  <% else %>
+                      <img class=" avatarMedium _avatar _avatarAid548300" data-aid="<%=user.id%>" src="/user/images/117951.rsz.jpg">
+                  <% end %>
+                </div>
+              </div>
+                <div class="speakerProfileTooltipContent clearfix">
+                <span role="checkbox" aria-checked="false" class="_cwCB _cwCBUnchecked ico15Checkbox _contactPanelCheck" data-theme="" onclick="change_status(this)">
+                  <input type="hidden" value="<%=user.id%>">
+                </span>
+                  <dl>
+                    <dt><span class="_profileTipCheckLabel"><span class="_nameAid589747"><%=user.name%></span></span>
+                    </dt>
+                    <dd id="_profileTipOrgName"><span class="cw_onm589747"></span></dd>
+                  </dl>
+                </div>
+                <div class="tooltipFooter"><div class="btnGroup"><div class="_profileTipButton">
+                  <div class="_requestContact _actionButton button btnPrimary" data-aid="<%=user.id%>" onclick="add_friend(<%=user.id%>)">添加联系人</div>
+                </div></div></div></div>
+            </li>
+          <% end%>
+        </ul>
+    <% else%>
+        <ul id="_contactWindowList" class="contactList">
+          <div class="emptyAdminContent">
+            <img src="/user/images/img_contact_empty.png" alt="">
+            <p>未发现相符用户</p>
+          </div>
+        </ul>
+    <% end%>
+<% else%>
+    <ul id="_contactWindowList" class="contactList">
+      <div class="emptyAdminContent">
+        <img src="/user/images/img_contact_empty.png" alt="">
+        <p>搜索希望添加的联系人</p>
+      </div>
+    </ul>
+<% end%>
+
+

@@ -1,0 +1,57 @@
+<%= render :partial => "user_group_top" %>
+<div class="pgtitle clearfix">
+  <h2 class="h2_title">グループ一覧</h2>
+
+  <div class="btnbar">
+    <%= link_to_remote("新规群组",
+                       {:update => 'tabWrap',
+                        :url => {:id => params[:id], :tab => 'user_new_group'},
+                        :loading => "show_ajax(this,'#{params[:id]}','user_new_group')"}) %>
+    <%= link_to_remote("新规任務",
+                       {:update => 'tabWrap',
+                        :url => {:id => params[:id], :tab => 'user_group_create_new_task'},
+                        :loading => "show_ajax(this,'#{params[:id]}','user_group_create_new_task')"}) %>
+
+  </div>
+</div>
+<%= render :partial => "layouts/messages" %>
+<table class="tlist" width="100%">
+  <tr>
+    <th width="4%">ID</th>
+    <th width="20%">Main name</th>
+    <th>name</th>
+    <th width="15%">Operation</th>
+  </tr>
+  <% if @groups.blank? %>
+      <tr>
+        <td colspan="11" class="ac">該当するデータが見つかりません。</td>
+      </tr>
+  <% else %>
+      <% @groups.each do |group| %>
+          <tr>
+            <td><%= group.id %></td>
+            <td><%= group.main_group %></td>
+            <td><%= group.name %></td>
+
+            <td class="action">
+              <%= link_to "詳細", :action => 'group_detail', :id => group.id %> |
+              <%= link_to "メーセージが送信", {:controller => "/admin/user",
+                                       :action => 'send_user_group_message',
+                                       :user_id => @user.id, :group_id => group.id}, :target => '_blank' %>
+              <br/>
+              <li><%= link_to_remote("退会",
+                                     {:update => 'tabWrap',
+                                      :url => {:group_id => group.id, :user_id => @user.id, :tab => 'user_group_deleted'},
+                                      :loading => "show_ajax(this,'#{params[:id]}','user_group')"},
+                                     :id => 'user_group_deleted',
+                                     :confirm => "退会してもよろしいでしょうか？") %></li>
+            </td>
+          </tr>
+      <% end %>
+  <% end %>
+</table>
+</div>
+<script type="text/javascript">
+    $('show_user').style.display = '';
+    $("show_user_group").style.display = '';
+</script>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta charset="UTF-8">
+  <meta name="application-name" content="ChatRoom">
+  <meta name="application-url" content="#">
+  <title id="title">ChatRoom</title>
+  <%= stylesheet_link_tag "user/style2" %>
+  <%= javascript_include_tag :defaults %>
+  <!--shadowbox link -->
+  <%= stylesheet_link_tag "admin/shadowbox" %>
+  <%= javascript_include_tag 'admin/common' %>
+  <%= javascript_include_tag 'admin/shadowbox/shadowbox' %>
+
+  <%= javascript_include_tag 'user/side_content' %>
+  <%= javascript_include_tag 'user/main_content' %>
+
+  <!--calendar-->
+  <%#= calendar_date_select_includes "default", :locale => 'ja'  %>
+  <!--calendar end-->
+  <script>
+      // 下記2行を追加
+      //jQuery.noConflict();
+      //var j$ = jQuery;
+  </script>
+  <script type="text/javascript">
+      Shadowbox.init({
+          skipSetup: true,
+          players: ["iframe"],
+          modal:  true
+      });
+  </script>
+</head>
+
+<body class="zh-cn" style=""  >
+<div id="_wrapper" class="wrapper" style="visibility: visible;">
+  <div id="_globalHeader" class="globalHeader">
+    <%= render :partial => "/layouts/global_header" %>
+  </div>
+  <%= yield %>
+</div>
+
+<script type="text/javascript">
+    //自适应页面大小
+    function setSideContent(){
+        //网页可见区域高
+        size=document.documentElement.clientHeight
+        //设置style中height的值 ;
+        document.getElementById("_wrapper").style.height=size+"px";
+        document.getElementById("_sideContent").style.height=size-41+"px";
+        if(document.getElementById("_overflow") != null){
+            document.getElementById("_overflow").style.height=size-141+"px";
+        }
+        if(document.getElementById("_mainContent") != null){
+        document.getElementById("_mainContent").style.height=size-41+"px";
+        }
+        if(document.getElementById("_subContent") != null){
+        document.getElementById("_subContent").style.height=size-83+"px";
+        }
+        if(document.getElementById("_subContentArea") != null){
+        document.getElementById("_subContentArea").style.height=size-83+"px";
+        }
+        if(document.getElementById("_roomListArea") != null){
+        document.getElementById("_roomListArea").style.height=size-121+"px";
+        }
+        if(document.getElementById("_timeLine") != null){
+            document.getElementById("_timeLine").style.height=size-220+"px";
+        }
+        if(document.getElementById("_emoticonList") != null){
+            document.getElementById("_emoticonList").style.top=size-370+"px";
+        }
+    }
+    setSideContent();
+    window.onresize=setSideContent;
+
+
+</script>
+</body>
+</html>

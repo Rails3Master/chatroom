@@ -1,0 +1,121 @@
+<!<!-- start admin_contact -->
+<div id="_contactWindowShow" class="floatWindow" style="display: none; z-index: 1001;">
+  <div id="_contactWindow" class="contactWindow _cwFWInner floatWindowInner" style="left: 410px; right: 410px;"
+       role="dialog" aria-label="联系人管理">
+    <h1 class="contentHl floatContentH1"><span class="autotrim">联系人管理</span></h1>
+    <div class="windowButton linkIconStatus" onclick="hideContactWindow()">
+      <span class="_cwFWButton icoFontCancel icoSizeLarge" data-cwui-fw-idx="-1"></span>
+      <span class="icoTextHide">关闭</span>
+    </div>
+  <div class="_cwFWHeader">
+    <div class="floatHeaderTab clearfix">
+      <ul id="_contactWindowTab">
+        <li id="_contactWindowTabContact" data-type="addcontact" class="floatTabSelect">添加新的联系人</li>
+        <li id="_contactWindowTabMyContact" data-type="contact" class="">联系人一览表<span id="_contactWindowListNum">(23)</span></li>
+        <li id="_contactWindowTabMyRequest" data-type="myrequest" style="" class="">等待对方确认中<span id="_contactWindowMyRequestNum">(1)</span></li>
+        <li id="_contactWindowTabRequest" data-type="request" style="display: none;">未确认<span id="_contactWindowRequestNum"></span></li>
+        <li id="_contactWindowTabNoRequest" data-type="norequest" style="display: none;">未联系<span id="_contactWindowNoRequestNum"></span></li>
+      </ul>
+    </div><!-- .floatHeaderTab -->
+    <!--iframe name="iframe" style="display:none;"></iframe-->
+    <div id="_contactWindowNavigation" class="adminNavigation">
+      <div class="search">
+        <span class="icoFontSearch icSearch"></span>
+        <span class="_cwSBCancel icoFontCancel icSearchCancel icoSizeLarge" style="display: block;"></span>
+        <%# form_remote_for :chat, :url => {:controller=>"chat", :action => "like_select_user"} ,:html => { :id=>"like_select", :target => 'iframe'  } do |f| %>
+            <input type="text" id="_contactWindowSearch" class="inputLong _cwSB searchBox" role="search" name="condition"
+                   placeholder="输入ChatRoomID" onkeyup="selectUserByLike(this.value)">
+        <%# end %>
+      </div>
+      <div id="_addContactType" class="_contactWindowNavigationItem btnGroup" style="display: inline-block;">
+        <div class="button btnPrimary btnSplit">
+          <div id="_addContactByFacebook" class=" btnSplitMain" data-provider="facebook">寻找Facebook上的好友</div>
+          <div id="_addContactBySocialMore" class="btnSplitDropdown"><span class="icoFontTriangleDown"></span></div>
+        </div>
+        <div id="_addContactByMail" class="button">同时添加邮件地址</div>
+      </div>
+      <div class="btnCheckGroup">
+        <div id="_contactWindowCheckAllButton" class="_button btnLarge _cwBN button" role="button" aria-disabled="false"><span role="checkbox" aria-checked="false" type="checkbox" id="_contactWindowCheckAll" class="_cwCB _checkBox _cwCBUnchecked ico15Checkbox" data-theme=""><input type="hidden" value="on"></span>全选</div>
+        <div id="_contactWindowCheckActionArea" style="display:inline">
+          <div id="_contactWindowAdd" class="_contactWindowNavigationItem _button btnLarge _cwBN button btnDisable" style="display: inline-block;" role="button" aria-disabled="true">添加联系人</div>
+          <div id="_contactWindowDelete" class="_contactWindowNavigationItem _button btnLarge _cwBN button btnDisable" style="display: none;" role="button" aria-disabled="true">从联系人删除</div>
+          <div id="_contactWindowCancel" class="_contactWindowNavigationItem _button btnLarge _cwBN button btnDisable" style="display: none;" role="button" aria-disabled="true">取消确认</div>
+          <div id="_contactWindowAccept" class="_contactWindowNavigationItem _button btnLarge _cwBN button btnDisable" style="display: none;" role="button" aria-disabled="true">接受</div>
+        </div>
+      </div>
+      <div class="floatListpager">
+        <p id="_contactWindowPagerIndex">1 / 2</p>
+        <ul id="_contactWindowPager" class="cwTextUnselectable btnNavList _cwBB" role="menu"><li role="menuitemradio" class="_cwBBButton button btnDisable" data-cwui-bb-idx="0" aria-disabled="true"><span class="icoFontArrowDoubleLeft"></span><span class="icoTextHide">返回初始页</span></li><li role="menuitemradio" class="_cwBBButton button btnDisable" data-cwui-bb-idx="1" aria-disabled="true"><span class="icoFontTriangleLeft"></span><span class="icoTextHide">返回上一页</span></li><li role="menuitemradio" class="_cwBBButton button" data-cwui-bb-idx="2" aria-disabled="false"><span class="icoFontTriangleRight"></span><span class="icoTextHide">返回下一页</span></li><li role="menuitemradio" class="_cwBBButton button" data-cwui-bb-idx="3" aria-disabled="false"><span class="icoFontArrowDoubleRight"></span><span class="icoTextHide">返回至最后页</span></li></ul>
+      </div>
+    </div><!-- adminNavigation -->
+  </div><!-- ._cwFWHeader -->
+  <div class="_cwFWContent floatWindowContent" style="height: 467px;">
+    <div class="adminWindowAllList">
+      <div id="_contactWindowBox" class="adminAllListArea">
+        <ul id="_contactWindowList" class="contactList">
+          <div class="emptyAdminContent">
+            <img src="/user/images/img_contact_empty.png" alt="">
+            <p>搜索希望添加的联系人</p>
+          </div>
+        </ul>
+      </div><!-- .adminAllListArea -->
+      <div class="adminDetailArea contactDetailArea">
+        <div id="_contactDetailArea" class="adminDetailContentArea" style="display: none;" data-aid="">
+          <div class="adminDetailH1">
+            <div class="_profileName adminDetailText autotrim"><span class="_nameAid589747">260.PENG Yu-chen</span></div>
+            <div class="closeAction linkIconStatus"><span id="_contactDetailClose" role="button" class="icoFontCancel icoSizeLarge"></span><span class="icoTextHide">关闭</span></div>
+          </div>
+          <div class="_profileContactDetailCover profileContactDetailCoverArea"><img class=" _coverAid589747" data-aid="589747" src="./[1]ChatWork - 彭海文_files/leaf.jpg"></div>
+          <div class="adminDetailContent contactDetailContent">
+            <div class="controlGroup">
+              <label class="controlLabel">自我介绍:</label>
+              <div class="_profileNameDescription controlContent" style="display: none;"></div>
+            </div>
+            <div class="controlGroup">
+              <label class="controlLabel">组织名:</label>
+              <div class="_profileOrgName controlContent"><span class="cw_onm589747"></span></div>
+            </div>
+            <div class="controlGroup">
+              <label class="controlLabel">部门:</label>
+              <div class="_profileDepartment controlContent"></div>
+            </div>
+            <div class="controlGroup">
+              <label class="controlLabel">职位:</label>
+              <div class="_profileTitle controlContent"></div>
+            </div>
+            <div class="controlGroup">
+              <label class="controlLabel">地址:</label>
+              <div class="_profileAddress controlContent"></div>
+            </div>
+            <div class="controlGroup">
+              <label class="controlLabel">URL:</label>
+              <div class="_profileUrl controlContent"></div>
+            </div>
+            <div class="controlGroup">
+              <label class="controlLabel longLabel">电子邮件:</label>
+              <div class="_profileEmail controlContent"></div>
+            </div>
+            <div class="controlGroup">
+              <label class="controlLabel longLabel">电话号码（工作）:</label>
+              <div class="_profileOrgTel controlContent"></div>
+            </div>
+            <div class="controlGroup">
+              <label class="controlLabel longLabel">电话号码（内线）:</label>
+              <div class="_profileExtensionTel controlContent"></div>
+            </div>
+            <div class="controlGroup">
+              <label class="controlLabel longLabel">电话号码（手机）:</label>
+              <div class="_profileMobileTel controlContent"></div>
+            </div>
+          </div><!-- .adminDetailContentInner -->
+        </div><!-- .adminDetailContentArea -->
+        <div id="_contactDetailBlankArea" class="adminDetailContentArea" style="display: none;">
+          <div class="adminDetailNoneContenText">
+            点击联系人了解详情
+          </div>
+        </div><!-- .adminDetailArea -->
+      </div><!-- .contactDetailArea -->
+    </div><!-- .adminWindowAllList -->
+  </div><!-- ._cwFWContent -->
+  <div style="display:none" class="_cwFWButtonFooter floatWindowFooter"></div></div></div>
+<!-- end admin_contact -->

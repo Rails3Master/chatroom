@@ -1,0 +1,27 @@
+<%= render :partial => 'contact_top' %>
+<% form_for :contact, :url => {:action => 'add_contact'} do |c| %>
+    <h3>添加コンタクト</h3>
+    <hr class="cb"/>
+    <table class="tform mb10" align="center">
+      <tr>
+        <th>user name<span class="star">*</span></th>
+        <td><%= select(:contact, :user_ids, @users.collect { |u| [u.name, u.id] }, {:include_blank => false}, {:multiple => true}) %>
+        </td>
+      </tr>
+      <tr>
+        <th>content<span class="star">*</span></th>
+        <td><%= c.text_area :content, :cols => 90, :rows => 10 %>
+        </td>
+      </tr>
+    </table>
+    <div class="btnbar" align="center">
+      <%= button_to_function 'Submit', "this.form.action='#{url_for :action => 'add_contact'}';
+  this.form.target='_self';this.form.submit()" %>
+    </div>
+    <%= hidden_field_tag "user[id]", params[:id] %>
+<% end %>
+<script type="text/javascript">
+    $('show_contact').style.display = '';
+    $("add_contact").className = "selected";
+</script>
+

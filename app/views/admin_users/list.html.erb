@@ -1,0 +1,50 @@
+<div class="pgtitle clearfix">
+  <h2 class="h2_title">ユーザー一覧</h2>
+  <% form_tag '/admin/user/export_csv' do %>
+      <%= hidden_field_tag "user[id]", params[:user][:id] if params[:user] %>
+      <%= hidden_field_tag "user[name]", params[:user][:name] if params[:user] %>
+      <%= hidden_field_tag "user[tel]", params[:user][:tel] if params[:user] %>
+      <%= hidden_field_tag "user[email]", params[:user][:email] if params[:user] %>
+      <%= hidden_field_tag "task[title]", params[:task][:title] if params[:task] %>
+      <%= hidden_field_tag "group[name]", params[:group][:name] if params[:group] %>
+      <div class="btnbar">
+        <input type="button" value="ユーザー一括登録（CSV）" onclick="location.href='/admin/user/user_import_csv'"/>
+        <%= button_to_function('CSVダウンロード', "$('search').action = '/admin/user/user_export_csv'; $('search').submit();") %>
+        <input type="button" value="新規登録" onclick="location.href='/admin/user/sign_request'"/>
+      </div>
+  <% end %>
+</div>
+
+<div class="searchBox">
+  <h3>検索条件</h3>
+
+  <div class="box">
+    <div class="boxInner">
+      <% form_for :user, :url => {:action => 'search'}, :html => {:id => "search"} do |f| %>
+          <%= render :partial => 'search_form', :locals => {:f => f} %>
+          <div class="searchbar">
+            <%= submit_tag "", :class => 'btnSearch' %>
+            <%= button_to_function('', "location.href='#{url_for(:action => :list)}'", :class => 'btnAllList') %>
+            <%= button_to_function('', "clear_search();", :class => 'btnSearchClear') %>
+          </div>
+      <% end %>
+    </div>
+  </div>
+  <%= render :partial => 'list_form' %>
+</div>
+<script type="text/javascript">
+    $('show_user').style.display = '';
+    $("nav_user_list").className = "selected";
+    function clear_search() {
+        $('user_id').value = '';
+        $('user_name').value = '';
+        $('user_tel').value = '';
+        $('user_email').value = '';
+        $('task_title').value = '';
+        $('group_name').value = ''
+
+    }
+    ;
+
+
+</script>

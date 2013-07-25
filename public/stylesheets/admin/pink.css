@@ -1,0 +1,42 @@
+@charset "utf-8";
+/* CSS Document */
+
+/*============header=================*/
+#head .mainNav ul li a.on,#head .mainNav ul li a:hover{
+	background:url(/admin/images/pink/nav_bg_on.jpg) no-repeat left top;
+}
+.subnav{
+	background: url(/admin/images/pink/head_bg.jpg) repeat-x left top;
+}
+#head .top .topInfo span a{
+	background:url(/admin/images/pink/tri.png) no-repeat left 0px;
+}
+
+/*===============nav===================*/
+.subnav .items ul li a{
+	background:url(/admin/images/pink/tri02.png) no-repeat left 50%;
+}
+.subnav .items ul li a:hover,.subnav .items ul li a.selected{
+	color:#1A3400;
+	background:url(/admin/images/pink/tri01.png) no-repeat left 50%;
+}
+
+/* ========== searchBox ========== */
+.searchBox .box{
+	border-top:3px solid #FA5B91;
+}
+
+h3{
+	border-bottom:3px solid #FA5B91;
+}
+
+/* ========== footer ========= */
+
+#footer{
+	border-top:1px solid #FB6497;
+}
+
+/* ========== pgtitle ========= */
+.pgtitle{
+	background:url(/admin/images/pink/title_bg.jpg) repeat-x left bottom;
+}

@@ -1,0 +1,15 @@
+<div class="mainNav">
+  <div id="show_user_group" class="items" style="display:none;">
+    <ul class="manager clearfix">
+      <li><%= link_to_remote("加入の群", {:update => 'tabWrap',
+                                      :url => {:id => params[:id], :tab => 'user_join_group'},
+                                      :loading => "show_ajax(this,'#{params[:id]}','user_join_group')"},
+                             :id => 'user_join_group') %></li>
+      <li><%= link_to_remote("自分のグループを構築", {:update => 'tabWrap',
+                                            :url => {:id => params[:id], :tab => 'user_create_group'},
+                                            :loading => "show_ajax(this,'#{params[:id]}','user_create_group')"},
+                             :id => 'user_create_group') %></li>
+    </ul>
+  </div>
+</div>
+<%= render :partial => "layouts/messages" %>

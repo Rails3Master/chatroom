@@ -1,0 +1,67 @@
+<div class="pgtitle">
+  <h2 class="h2_title">任務一覧</h2>
+  <hr class="cb" />
+</div>
+<div class="searchBox">
+  <h3>検索条件</h3>
+  <div class="box">
+    <div class="boxInner">
+      <% form_for :task, :url =>{:action => "search"}, :html =>{:id => "search"}  do |f| %>
+          <%= f.error_messages %>
+          <table width="96%">
+            <tr>
+              <th>ユーザーID</th>
+              <td><%= f.text_field :user_id, :class => 'w180',:value => (params[:task][:user_id] if params[:task]) %></td>
+              <th>任務タイトル</th>
+              <td><%= f.text_field :title, :class => 'w180',:value => (params[:task][:title] if params[:task]) %></td>
+            </tr>
+          </table>
+          <div class="searchbar">
+            <%= submit_tag "", :class => "btnSearch"  %>
+            <%= button_to_function('', "location.href='#{url_for(:action => :index)}'",:class => 'btnAllList') %>
+            <%= button_to_function('', "clear_search();",:class => 'btnSearchClear') %>
+          </div>
+      <%end%>
+    </div>
+  </div>
+</div>
+<h3>検索結果</h3>
+<div style="text-align:center;color:red"><%=flash[:delete]?flash[:delete]:nil %></div>
+<div class="pgInfo">
+  <p class="total">合計：<%= @tasks.total_entries %>件</p>
+  <%= will_paginate @tasks, :params => params  %>
+</div>
+<table class="tlist mb10" width="100%">
+  <tr>
+    <th >ID</th>
+    <th >ユーザーID</th>
+    <th>タイトル</th>
+    <th >期限</th>
+    <th width="15%">アクション</th>
+  </tr>
+  <%if @tasks.blank?%>
+      <tr> <td class="ac" colspan="5"> 該当するデータが見つかりません。</td></tr>
+  <% end %>
+  <% @tasks.each do |a| %>
+      <tr>
+        <td><%= a.id %> </td>
+        <td><%= a.user_id %> </td>
+        <td><%= a.title %> </td>
+        <td><%= a.limit_time %></td>
+        <td class="ac">
+          　　<%= link_to "詳細",:action => "view", :id => a.id %> |
+          <%= link_to "編集",:action => "edit", :id => a.id %> |
+          <%= link_to "削除", { :action => "delete", :id => a.id} , :confirm => "削除してもよろしいですか？"%>
+        </td>
+      </tr>
+  <%end%>
+</table>
+<script type="text/javascript" language="javascript">
+    $('show_task').style.display='';
+    $("nav_task_list").className="selected";
+    function clear_search(){
+        $$('form input').each(function(item){
+            item.value=''
+        })
+    };
+</script>

@@ -1,0 +1,43 @@
+
+<div id="_content" class="content" onmousedown="hideAddButtonShow()">
+    <div id="_sideContent" class="sideContent" >
+     <%= render :partial => "side_content" %>
+    </div>
+    <div id="_mainContent" class="mainContent" >
+        <%#= render :partial => "/user/main_content" %>
+    </div>
+</div>
+
+<div id="_addButtonShow" style="opacity: 1; z-index: 2; top: 79px; left: 189px; display: none;"
+     role="tooltip" class="toolTip toolTipWhite mainContetTooltip">
+  <ul role="menu" class="_cwDDListBody cwNoWrap ddListBody">
+    <li role="menuitem" class="_cwDDList" data-cwui-dd-value="addchat">新建群聊</li>
+    <li role="menuitem" class="_cwDDList" data-cwui-dd-value="addcontact" onclick="showAddContact()">添加联系人</li>
+  </ul>
+</div>
+
+<!-- add task-->
+<div id="_taskAssignList" class="toolTiptaskAssignList toolTipListWidth toolTip toolTipWhite mainContetTooltip"
+     style="opacity: 1; z-index: 1001; top: 50px; right: 10px;display: none " role="tooltip" >
+  <div class="_cwTTTriangle toolTipTriangle toolTipTriangleWhiteBottom" style="left: 189px;"></div>
+  <div class="toolTipSearchArea">
+    <div class="_cwLTSearchBoxArea">
+      <div class="search">
+        <span class="icoFontSearch icSearch"></span>
+        <span class="_cwSBCancel icoFontCancel icSearchCancel icoSizeLarge" style="display: none;"></span>
+        <input class="inputMedium _cwSB searchBox" type="text" role="search" placeholder="搜索成员名">
+      </div>
+    </div>
+    <div class="_cwLTCheckHandle tooltipCheckHandle">
+      <span class="_cwLTCheckAll linkStatus">全部</span>
+      / <span class="_cwLTUnCheckAll linkStatus">取消</span>
+    </div>
+  </div>
+<div id="_task_choose_executor"></div>
+</div>
+<!--add task end -->
+
+<!--emoticonList-->
+<%= render :partial => "emoticon_list" %>
+<!-- #_emoticonList end -->
+

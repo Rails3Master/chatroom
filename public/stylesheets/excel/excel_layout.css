@@ -1,0 +1,339 @@
+@charset "utf-8";
+/* CSS Document */
+
+/* =========== common ============= */
+.only_one{
+	position:relative;
+	width:100%;
+}
+.only_one table{
+	border-collapse:collapse;
+	font-size:12px;
+}
+.only_one th, .only_one td{
+	padding:0;
+}
+.only_one hr.cb{
+	visibility:hidden;
+	height:1px;
+	clear:both;
+}
+#promote{
+	margin-bottom:10px;
+	/*background-color:#ffffcc;*/
+	text-align:center;
+}
+
+/* =========== excel_head ============= */
+.excel_head{
+	width:100%;
+	margin:20px 0 2px 0;
+}
+.excel_head img, .excel_head input{
+	vertical-align:top;
+}
+.excel_head .btn_excel_save{
+	width:164px;
+	height:21px;
+	border:none;
+	background:url(/images/excel/btn_excel_save.gif) no-repeat;
+	line-height:160px;
+	font-size:0;
+	overflow:hidden;
+}
+.excel_head .btn_excel_delete{
+	width:179px;
+	height:21px;
+	border:none;
+	background:url(/images/excel/btn_excel_delete.gif) no-repeat;
+	line-height:160px;
+	font-size:0;
+	overflow:hidden;
+}
+
+/* =========== toolBar ============= */
+.toolBar th{
+	padding:3px 5px;
+	border:1px solid #DEDEB4;
+	border-bottom:none;
+	background-color:#F0F0CB;
+}
+.toolBar th .separator{
+	border-left:3px solid #C1C1FF;
+}
+/* =========== show value area ============= */
+.valueArea{
+	border-top:1px dotted #C1C1FF;
+	border-bottom:1px dotted #C1C1FF;
+	margin-bottom:2px;
+	padding:5px 0;
+	font-family:"Courier New";
+}
+
+/* =========== excelWrap ============= */
+/*
+.excelWrap {
+	position:relative;
+	_height:200px;
+	margin-bottom:20px;
+}
+.top_left_corner{
+	display:none;
+	position:absolute;
+	left:0;
+	top:0;
+	z-index:99999;
+	width:0;
+	height:0;
+	font-size:0;
+	background-color:#C9D8F0;
+}
+*/
+.only_one .per_w{
+	margin-left:31px;
+	border-top:1px solid #9EB6CE;
+	border-left:1px solid #9EB6CE;
+	border-right:1px solid #9EB6CE;
+}
+*html .per_w{
+	width:95%;
+}
+/* =========== fixColsHead ============= */
+.only_one .fixColsHead_wrap{
+	position:relative;
+	_width:100%;/*加上此属性后，IE6中才会浮动到右边*/	
+	overflow:hidden;
+}
+.only_one .fixColsHead{
+	/*position:relative;加上此属性后，IE6 IE7中才会隐藏超出部分*/	
+	overflow:hidden;
+}
+.only_one .fixColsHead th{
+	border-right:1px solid #9EB6CE;
+	border-bottom:1px solid #9EB6CE;
+}
+/* the first col */
+.only_one .fixColsHead .colHead0{
+	display:none;
+}
+.only_one .fixColsHead .colHead0 .cellwrap{
+	width:0;
+	padding:0;
+	
+}
+.only_one .fixColsHead .cellwrap{
+	position:relative;
+	height:20px;
+	padding:2px;
+	background-color:#C9D8F0;
+}
+/*dynamic set the width value*/
+.only_one .fixColsHead .cellwrap.w_value{
+	width:200px;
+}
+/* =========== fixRowsHead ============= */
+.only_one .fixRowsHead{
+	position:relative;/*加上此属性后，IE6 IE7中才会隐藏超出部分*/
+	float:left;
+	min-width:30px;
+	width:auto !important;
+	width:30px;
+	overflow: visible;
+	border-top:1px solid #9EB6CE;
+	border-left:1px solid #9EB6CE;
+	background-color:#C9D8F0;
+}
+.only_one .fixRowsHead #fixRowsHeadBlock{
+	position:relative;
+	height:49px;
+	border-bottom:1px solid #9EB6CE;
+	background-color:#C9D8F0;
+	z-index:100;
+	overflow:hidden;
+}
+.only_one .fixRowsHead th, .only_one .fixRowsHead td{
+	border-bottom:1px solid #9EB6CE;
+}
+.only_one .fixRowsHead .errCol{
+	display:none;
+}
+.only_one .fixRowsHead .errCol .errDiv{	
+	width:100px;
+	height:20px;
+	padding:2px 0;
+	background-color:#FFEAEA;
+	overflow:hidden;
+}
+.only_one .fixRowsHead .cellwrap {
+	position:relative;
+	width:30px;
+	padding:2px 0;
+	background-color:#C9D8F0;
+}
+/*dynamic set the height value*/
+.only_one .fixRowsHead .cellwrap.h_value{
+	height:20px;
+}
+/* =========== excelBody ============= */
+.only_one .excelBody{
+	position:relative;
+	_width:100%;/*加上此属性后，IE6中才会浮动到右边*/
+	border-right:1px solid #eee;
+	overflow:auto;
+}
+.only_one .excelBody td{
+	border-right:1px solid #9EB6CE;
+	border-bottom:1px solid #9EB6CE;
+	background-color:#fff;
+}
+
+.only_one .excelBody .cellwrap{
+	padding:2px;
+	width:200px;
+	overflow:hidden;
+}
+
+/*dynamic set the width and height value*/
+.only_one .excelBody .cellwrap.wh_value{
+	min-height:20px;
+}
+
+/* =========== hResizer vResizer ============= */
+.only_one .hResizer, .only_one .vResizer{
+	position:absolute;
+	font-size:0;
+	line-height:0;
+}
+.only_one .hResizer{
+	height:2px;
+	width:100%;
+	left:0;
+	bottom:0;
+	cursor:n-resize;
+}
+.only_one .vResizer{
+	width:2px;
+	height:24px;
+	right:0;
+	top:-0;
+	cursor:e-resize;
+}
+/* =========== clip Panel ============= */
+.copy{
+	border:2px dashed #3E62A8;
+	padding:0;
+	z-index:20000001;
+}
+/* =========== tool tip ============= */
+.tooltip{
+	position:absolute;
+	border:0px solid;
+}
+/* =========== activeBox handleDot ============= */
+.activeBox_C{
+	display:none;
+	position:absolute;
+	border:2px solid #000;
+}
+.activeBox_C .activeBox{
+	height:100%;
+}
+.activeBox_C .handleDot{
+	position:absolute;
+	right:0;
+	bottom:0;
+	_bottom:-1px;
+	width:3px;
+	height:3px;
+	background-color:#0066CC;
+	cursor: nw-resize;
+	font-size:0;
+	line-height:0;
+}
+.activeBox_C textarea{
+	margin:0;
+}
+/* form style */
+.activeBox_C .activeBox textarea{
+	border:none;
+}
+/* =========== selected area effect ============= */
+.excelBody .selectArea{
+	background-color: #ccddee;
+}
+.fixRowsHead .selectArea,
+.fixColsHead .selectArea{
+	background-color:#ccc;
+}
+
+/* =========== right click menu ============= */
+.RClickMenuSkin{
+	position:absolute;
+	border-width:1px 2px 2px 1px;
+	*border-width:1px;
+	border-style:solid ridge ridge solid;
+	border-color:#ddd #ccc #ccc #ddd;
+	visibility:hidden;
+	width:200px;
+	cursor:default;
+	line-height:20px;
+	background-color:#f3f3f3;
+	text-align:left;
+}
+.RClickMenuSkin hr{
+	margin:2px;
+	height:1px;
+	border-width:0;
+	background-color:#999;
+}
+.RClickMenuSkin a{
+	display:block;
+	clear:both;
+	text-decoration:none;
+}
+.RClickMenuSkin .menuitems{
+	float:left;
+	width:100px;
+	margin:0 1px;
+	padding:2px 10px;
+}
+
+/* =========== pagination ============= */
+#excel_content .pagination{
+	margin-top:5px;
+	*margin-top:0;
+}
+#excel_content .pagination label{
+	padding:0 2px 0 10px;
+	vertical-align:middle;
+}
+#excel_content .pagination a{
+	/* vertical-align:middle; */
+       /* add by dxy */
+        color:#444444;
+}
+/* add by dxy */
+/* #excel_content .pagination span{
+	border:1px solid #999;
+	padding:0 10px;
+	background-color:#ffffcc;
+	font-weight:bold;
+	vertical-align:top;
+} */
+#excel_content .pagination span.current{
+	color:#ef7600;;
+	font-weight:bold;
+}
+#excel_content .pagination span.info, .pagination .prev_page,.pagination .next_page{
+	border:1px solid #cacaca;
+	padding:1px 4px;
+	background-color:#d3e9fc;
+}
+#excel_content .pagination .prev_page.disabled{
+	background-color:#efefef;
+}
+        
+#excel_content .excel_head .pagination{
+	margin-top:0;
+	*padding-top:2px;
+}

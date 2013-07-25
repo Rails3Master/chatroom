@@ -1,0 +1,30 @@
+<%= render :partial => 'contact_top' %>
+<table class="tlist" width="100%">
+  <tr>
+    <th width="4%">Contact ID</th>
+    <th width="20%">user name</th>
+    <th>content</th>
+    <th width="15%">Operation</th>
+  </tr>
+  <% if @contacts.blank? %>
+      <tr>
+        <td colspan="11" class="ac">該当するデータが見つかりません。</td>
+      </tr>
+  <% else %>
+      <% @contacts.each do |contact| %>
+          <tr>
+            <td><%= contact.id %></td>
+            <td><%= contact.user_name %></td>
+            <td><%= contact.content %></td>
+
+            <td class="action">
+              <%= link_to "確認", :action => 'contact_confirmation_user', :id => contact.id %> |
+              <%#= link_to "メーセージが送信", {:controller => "/admin/user", :action => 'send_message', :id => contact.id }, :confirm => "削除してもよろしいでしょうか？" %>
+            </td>
+          </tr>
+      <% end %>
+  <% end %>
+</table>
+<script type="text/javascript">
+    $('show_contact').style.display = '';
+</script>

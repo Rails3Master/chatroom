@@ -1,0 +1,62 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>システムログイン</title>
+  <%= stylesheet_link_tag "admin/layout" %>
+  <%= stylesheet_link_tag "admin/login" %>
+  <%= javascript_include_tag :defaults %>
+</head>
+
+<body class="login">
+<div id="wrap">
+  <div id="content">
+    <%if flash[:notice].present?%>
+        <div class="flash_notice"><p><%= flash[:notice] %><% flash[:notice] = nil %></p></div>
+    <%end%>
+    <div class="loginBox">
+      <h2>システムログイン</h2>
+      <%form_tag do -%>
+          <div class="innerbox">
+            <table cellspacing="8">
+              <tr>
+                <th>ログインID：</th>
+                <td>
+                  <%= text_field_tag 'login',"#{params[:login] if params[:login]}", :class => "W260" %>
+                </td>
+              </tr>
+              <tr>
+                <th>パスワード：</th>
+                <td><%= password_field_tag 'password','', :class => 'W260' %></td>
+              </tr>
+              <tr>
+                <td colspan="2" align="center">
+                  <div style="position: relative;">
+                    <%= submit_tag '', :class => "btn_login", :onclick => "this.disabled = true;this.form.submit()"%>
+                    <span style="position:absolute;right:0px;top:20px;">
+                       <!--<a id="ssl" href=<%#= "https://#{request.host()}#{request.path()}"%>>SSLでログイン</a>-->
+                      </span>
+                  </div>
+                </td>
+              </tr>
+            </table>
+          </div>
+      <%end%>
+    </div>
+  </div>
+  <script  language="javascript" type="text/javascript">
+      if($F('login')==''){
+          $('login').focus();}
+      else{ $('password').focus();}
+      //if( window.location.protocol=="https:")
+      //{
+      //  $('ssl').replace('');
+      // }
+  </script>
+  <div id="footer">
+    Copyright (C) 2011 With us Corporation. All rights reserved.
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,19 @@
+<p align="center"><%= error_messages_for :user %></p>
+<% form_for :user, :url => {:controller => "admin/user", :action => 'sign_request'} do |u| %>
+
+    <div class="pgtitle clearfix">
+      <h2 class="h2_title">ユーザー登録</h2>
+
+      <div class="btnbar">
+        <%= submit_tag '登録' %>
+        <%= button_to_function "戻る", :onclick => "window.location.href='/admin/user/list'" %>
+      </div>
+    </div>
+    <h3 id="user_detail">ユーザー情報</h3>
+    <p class="mb10">この画面にて、ユーザーのプロフィール及び保護者のパスワード等を編集することができます。</p>
+    <%= render :partial => 'info_form', :locals => {:u => u} %>
+<% end %>
+<script type="text/javascript" language="javascript">
+    $('show_user').style.display = '';
+    $("user_new").className = "selected";
+</script>

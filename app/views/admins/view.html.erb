@@ -1,0 +1,43 @@
+<div id="add_course_notice"></div>
+<div class="pgtitle">
+  <h2 class="h2_title">企業管理者情報</h2>
+  <div class="btnbar">
+
+    <%= button_to_function "戻る", "window.location.href='/admins'" %>
+  </div>
+  <hr class="cb" />
+</div>
+<table class="tform mb10" width="100%">
+  <tr>
+    <th width="15%" >企業名</th>
+    <td colspan="3"><%= @admin.name %></td>
+  </tr>
+  <tr>
+    <th>写真</th>
+    <td>
+      <% if @admin.photo_path.present? %>
+          <%= image_tag( @admin.photo_path) %>
+      <% else %>
+           <p>あなたは写真がアップロドしません。</p>
+      <% end %>
+    </td>
+  </tr>
+  <tr>
+    <th>電話番号 </th>
+    <td><%= @admin.tel %></td>
+  </tr>
+  <!--tr>
+    <th>住所</th>
+    <td colspan="3">〒 <%= @admin.zip_code.present? ? @admin.zip_code : " " %><br/>
+      <%#= @admin.address1.present? ? Admin::PREFS[@admin.address1.to_i][0]  : jp_zip2pref( @admin.zip_code) %><br/>
+      <%#= @admin.address2.present? ? @admin.address2 : " "   %><br/></td>
+  </tr-->
+  <tr>
+    <th>メールアドレス </th>
+    <td><%= @admin.email %></td>
+  </tr>
+
+</table>
+<script type="text/javascript" language="javascript">
+    $('#show_company').attr('style','');
+</script>

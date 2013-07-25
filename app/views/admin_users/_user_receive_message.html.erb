@@ -1,0 +1,40 @@
+<%= render :partial => "user_message_top" %>
+
+<div class="pgtitle clearfix">
+  <h2 class="h2_title">ユーザーの受信メッセージ一覧</h2>
+</div>
+
+<div class="searchBox">
+  <table class="tlist" width="100%">
+    <tr>
+      <th>Id</th>
+      <th>Send user name</th>
+      <th>Content</th>
+      <th>Created time</th>
+      <!--<th>Operation</th>-->
+    </tr>
+    <% if @messages.blank? %>
+        <tr>
+          <td colspan="11" class="ac">該当するデータが見つかりません。</td>
+        </tr>
+    <% else %>
+        <% @messages.each do |message| %>
+            <tr>
+              <td><%= message.id %></td>
+              <td><%= message.send_message_name %></td>
+              <td><%= message.content %></td>
+              <td><%= message.created_at %></td>
+              <!--  <td> <li><%#= link_to_remote("削除",
+                                                {:update => 'tabWrap',
+                                                 :url => {:id => params[:id], :tab => 'user_receive_message_delete'},
+                                                 :loading => "show_ajax(this,'#{params[:id]}','user_receive_message')"},
+                                                :id => 'user_receive_message',
+                                                :confirm => "削除してもよろしいでしょうか？") %></li></td>-->
+            </tr>
+        <% end %>
+    <% end %>
+  </table>
+</div>
+<script type="text/javascript">
+    $('show_user_message').style.display = '';
+</script>

@@ -1,0 +1,39 @@
+<div class="pgtitle clearfix">
+  <h2 class="h2_title">群组一览</h2>
+
+  <div class="btnbar">
+    <input type="button" value="新建群组" onclick="location.href='/admin/user/group_new'"/>
+  </div>
+</div>
+<div class="searchBox">
+  <h3>検索条件</h3>
+
+  <div class="box">
+    <div class="boxInner">
+      <% form_for :group, :url => {:action => 'group_search'}, :html => {:id => "search"} do |g| %>
+          <table width="36%">
+            <tr>
+              <th> 群组名</th>
+              <td>
+                <%= g.text_field :name, :class => 'w180',
+                                 :value => (params[:group][:name] if params[:group]) %>
+              </td>
+            </tr>
+          </table>
+          <div class="searchbar">
+            <%= submit_tag "", :class => 'btnSearch' %>
+            <%= button_to_function('', "location.href='#{url_for(:action => :group_list)}'", :class => 'btnAllList') %>
+            <%= button_to_function('', "clear_search();", :class => 'btnSearchClear') %>
+          </div>
+      <% end %>
+    </div>
+  </div>
+  <%= render :partial => 'group_list_form' %>
+</div>
+<script type="text/javascript">
+    $('show_user').style.display = '';
+    $("group_list").className = "selected";
+    function clear_search() {
+        $('group_name').value = ''
+    }
+</script>

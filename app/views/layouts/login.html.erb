@@ -1,0 +1,38 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>システムログイン</title>
+  <%= stylesheet_link_tag "admin/layout" %>
+  <%= stylesheet_link_tag "admin/login" %>
+  <%= javascript_include_tag :defaults %>
+</head>
+
+<body class="login">
+<div id="wrap">
+  <div id="content">
+    <% flash.each do |name, msg| %>
+        <% if msg.is_a?(String) %>
+            <%= content_tag :div, msg, :id => "flash_#{name}" %>
+        <% end %>
+    <% end %>
+    <div class="loginBox">
+      <%= yield %>
+    </div>
+  </div>
+  <script  language="javascript" type="text/javascript">
+      if($F('login')==''){
+          $('login').focus();}
+      else{ $('password').focus();}
+      //if( window.location.protocol=="https:")
+      //{
+      //  $('ssl').replace('');
+      // }
+  </script>
+  <div id="footer">
+    Copyright (C) 2011 With us Corporation. All rights reserved.
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,23 @@
+
+  <div class="pgtitle">
+    <h2 class="h2_title">企業管理者新規登録</h2>
+    <div class="btnbar">
+      <%= submit_tag "登録", :onclick => "this.disabled = true;this.form.submit()"%>
+      &nbsp;
+      <input type="button" value="戻る" onclick="location.href='/admin/admin/index'"/>
+    </div>
+    <hr class="cb" />
+  </div>
+  <%= form_for :admin, :url =>{ :action => "create"} do |f|  %>
+    <%= f.error_messages  %>
+    <%= render :partial => 'form', :locals => {f:f} %>
+  <div class="btnbar">
+    <%= submit_tag "登録", :onclick => "this.disabled = true;this.form.submit()"%>
+    &nbsp;
+    <input type="button" value="戻る" onclick="location.href='/admin/admin/index'"/>
+  </div>
+<%end%>
+<script type="text/javascript" language="javascript">
+    $('#show_company').attr('style', 'display');
+    $("#company_new").attr('className',"selected");
+</script>    

@@ -1,0 +1,30 @@
+<p align="center"><%= error_messages_for :group %></p>
+<% form_for :group, :url => {:controller => "admin/user", :action => 'group_user_delete'} do %>
+
+    <div class="pgtitle clearfix">
+      <h2 class="h2_title">グループの中のユーザーを削除する</h2>
+    </div>
+    <h3 id="user_detail">グループ情報</h3>
+    <p class="mb10">この画面にて、グループ情報。</p>
+    <table class="tform mb10" width="100%">
+      <tr>
+        <th>main group</th>
+        <td><%= @group.main_group %></td>
+        <th>name</th>
+        <td><%= @group.name %></td>
+      </tr>
+      <tr>
+        <th>memo</th>
+        <td colspan="3"><%= @group.memo %>
+        </td>
+      </tr>
+    </table>
+    <%= render :partial => 'group_info_form' %>
+    <div class="btnbar">
+      <%= submit_tag '削除' %>
+      <%= button_to_function "戻る", :onclick => "window.location.href='/admin/user/group_list'" %>
+    </div>
+<% end %>
+<script type="text/javascript" language="javascript">
+    $('show_user').style.display = '';
+</script>

@@ -1,0 +1,96 @@
+<div id="_inner" role="banner" class="inner">
+  <h1 id="_logo" style="">
+    <img class="nosvgLogo_ChatRoom" src="/user/images/img_logo_ChatRoom.png" alt="ChatRoom" height="26" width="152">
+  </h1>
+  <div id="_headerSearch" class="headerSearch">
+    <div class="search">
+      <span class="icoFontSearch icSearch"></span>
+      <span class="_cwSBCancel icoFontCancel icSearchCancel icoSizeLarge" style="display:none"></span>
+      <input id="_search" class="_searchBox inputLong _cwSB searchBox" type="text" name="search" placeholder="搜索在线聊天用户名和留言信息" role="search">
+    </div>
+  </div>
+
+  <div class="myStatus">
+    <ul id="_adminNavi" role="navigation" class="adminNavi" style="">
+      <li id="_openTaskWindow" role="button" aria-label="文件管理" class="linkstatus">
+        <span class="ico35AdminTask"></span>
+        <span id="_myAllTaskNum" class="numAdminCount" style="display: none;"></span>
+      </li>
+      <li id="_openFileWindow" role="button" aria-label="任务管理" class="linkstatus">
+        <span class="ico35AdminFile"></span>
+        <span id="_myFileNotice" class="numAdminCount" style="font-weight: bold; font-size: 13px; display: none;">&nbsp;!&nbsp;</span>
+      </li>
+      <li id="_openContactWindow" role="button" aria-label="联系人管理" class="_adminContact linkstatus">
+        <span class="ico35AdminContact"></span>
+        <span id="_myAllContactNum" class="numAdminCount" style="display: none;"></span>
+      </li>
+    </ul>
+    <div id="_openInfomation" role="button" class="helpMenu">
+      <span class="ico27Menu"></span>
+    </div>
+    <div id="_myStatusButton" class="cwTextUnselectable myStatusButton">
+      <div id="_myStatusIcon" class="myStatusIcon">
+        <% if current_user.photo_path.present? %>
+            <%= image_tag(user.photo_path) %>
+        <% else %>
+            <img class=" avatarMedium _avatar _avatarAid548300" data-aid="548300" src="/user/images/117951.rsz.jpg">
+        <% end %>
+      </div>
+      <p id="_myStatusName" class="myStatusName" style="">
+        <span  class="_nameAid630659"><%= current_user.name %></span>
+        <span class="openAction icoFontTriangleDown"></span>
+      </p>
+    </div>
+  </div>
+
+  <ul id="_myStatusBox" role="menu" class="myStatusMenu cwTextUnselectable">
+    <li id="_myProfile" role="menuitem"><a>设置个人资料</a></li>
+    <li id="_setting" role="menuitem"><a>个人设定</a></li>
+    <li id="_openAdminMenu" role="menuitem"><a id="_openServiceAdmin">管理设定</a></li>
+    <li id="_userAdminMenu" role="menuitem" style="display:none"><a href="https://www.ChatRoom.com/service/packages/ChatRoom/user_list.php" target="_blank">用户管理</a></li>
+    <li id="_changeuiToOldMenu" role="menuitem"><a>返回旧版本</a></li>
+    <li><a href="https://www.ChatRoom.com/?act=logout" role="menuitem">退出</a></li>
+  </ul>
+</div>
+
+<div id="_informationBox" class="helpMenuBox" style="width: 350px;display: none;">
+  <div id="_notificationArea" class="notificationArea" style="display: none">
+    <div class="notificationInner">
+      <p class="notificationTitle"><span class="icoFontInfo marginRight"></span>通知</p>
+      <div id="_notificationContents" class="notificationContentsArea">
+        <ul id="_notificationItemList"></ul>
+      </div>
+    </div>
+  </div>
+  <ul>
+    <li><a id="_userGuideLink">Tips</a></li>
+    <li><a href="http://help-en.ChatRoom.com/" target="_blank">帮助</a></li>
+    <li><a href="https://www.ecstudio.jp/ssl/ChatRoom/support.html" target="_blank">客户咨询</a></li>
+  </ul>
+  <div class="feedbackArea">
+    <p>客户意见及要求</p>
+    <small>*请注意，您不会因为留意见而受到回信)</small>
+    <textarea id="_feedbackMessage"></textarea>
+    <div class="feedbackBtnArea">
+      <div id="_submitFeedBackBtn" class="button btnPrimary">发送</div>
+    </div>
+  </div>
+  <div class="helpMenuFooter clearfix">
+    <small>© 2013 <a href="http://www.ChatRoom.com/about-us.html" target="_blank">ChatRoom</a></small>
+    <ul class="socialArea">
+      <li class="linkStatus"><a href="https://facebook.com/ChatRoom" target="_blank" class="_showDescription" aria-label="Facebook" data-delay="0"><span class="ico27FacebookWh"></span></a></li>
+      <li class="linkStatus"><a href="https://twitter.com/ChatRoom_en" target="_blank" class="_showDescription" aria-label="Twitter" data-delay="0"><span class="ico27TwitterWh"></span></a></li>
+      <li class="linkStatus"><a href="https://plus.google.com/101041432132486071752/" target="_blank" class="_showDescription" aria-label="Google+" data-delay="0"><span class="ico27GoogleWh"></span></a></li>
+      <li class="linkStatus"><a href="http://blog-en.ChatRoom.com/" target="_blank" class="_showDescription" aria-label="Blog" data-delay="0"><span class="ico27BlogWh"></span></a></li>
+    </ul>
+  </div>
+</div>
+
+<div id="_searchResult" class="searchResultArea " style="display: none; left: 260px;">
+  <ul id="_searchResultChatList" role="list" class="searchResultList searchResultChatList"></ul>
+  <div id="_messageSearch" class="searchResultFooter selected">
+    <span id="_messageSearchIcon" class="icoFontSearch " style="display: none"></span>
+    <span id="_messageSearchHint" class="keywordSearchArea"></span>
+  </div>
+</div>
+

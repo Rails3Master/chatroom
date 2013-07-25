@@ -1,0 +1,17 @@
+<div class="mainNav">
+  <div id="show_group_task" class="items" style="display:none;">
+    <ul class="manager clearfix">
+      <li class="groupuser_finish_task"><%= link_to_remote("完瞭した任務",
+                                                           {:update => 'tabWrap',
+                                                            :url => {:id => params[:id], :tab => 'group_finish_task'},
+                                                            :loading => "show_ajax(this,'#{params[:id]}','group_finish_task')"},
+                                                           :id => 'group_finish_task') %></li>
+      <li class="groupuser_unfinished_task"><%= link_to_remote("未完成の任務",
+                                                               {:update => 'tabWrap',
+                                                                :url => {:id => params[:id], :tab => 'group_unfinished_task'},
+                                                                :loading => "show_ajax(this,'#{params[:id]}','group_unfinished_task')"},
+                                                               :id => 'group_unfinished_task') %></li>
+    </ul>
+  </div>
+</div>
+<%= render :partial => "layouts/messages" %>

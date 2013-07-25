@@ -1,0 +1,8 @@
+#encoding: utf-8
+#配置
+:per_page_3: 3
+:per_page_5: 5
+:per_page_15: 15
+:preview_size: "38x38"
+#image
+:format: ['image/jpg', 'image/png', 'image/jpeg', 'image/gif', 'image/bmp']

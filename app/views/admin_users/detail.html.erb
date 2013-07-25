@@ -1,0 +1,110 @@
+<%= hidden_field_tag 'tab_class', 'contact' %>
+<div id="wrap">
+  <div id="head">
+    <div id="content">
+      <div class="pgtitle">
+        <h2 class="h2_title">ユーザー詳細</h2>
+
+        <div class="btnbar">
+          <%= button_to_function "編集", :onclick => "window.location.href='/admin/user/edit?id=#{@user.id}'" %>
+          <%= button_to_function "戻る", :onclick => "window.location.href='/admin/user/list'" %></div>
+      </div>
+      <hr class="cb"/>
+    </div>
+    <p class="mb10">この画面にて、ユーザー詳細。</p>
+
+    <div class="over_table">
+      <%= render :partial => "user_detail", :locals => {:user => @user} %>
+    </div>
+    <br/>
+
+    <div class="tabs">
+      <ul class="clearfix">
+        <li class="contact"><%= link_to_remote("<span>连絡先の管理</span>",
+                                               {:update => 'tabWrap',
+                                                :before => "show_ajax(this,'#{params[:id]}','contact')",
+                                                :url => {:id => params[:id], :tab => 'contact'}},
+                                               :id => "contact") %></li>
+
+        <li class="user_message"><%= link_to_remote("<span>情報の管理</span>",
+                                                    {:update => 'tabWrap',
+                                                     :before => "show_ajax(this,'#{params[:id]}','user_message')",
+                                                     :url => {:id => params[:id], :tab => 'user_message'}},
+                                                    :id => "user_message") %></li>
+
+        <li class="user_task"><%= link_to_remote("<span>任務の管理</span>",
+                                                 {:update => 'tabWrap',
+                                                  :before => "show_ajax(this,'#{params[:id]}','user_task')",
+                                                  :url => {:id => params[:id], :tab => 'user_task'}},
+                                                 :id => "user_task") %></li>
+        <li class="user_group"><%= link_to_remote("<span>グループ管理</span>",
+                                                  {:update => 'tabWrap',
+                                                   :before => "show_ajax(this,'#{params[:id]}','user_group')",
+                                                   :url => {:id => params[:id], :tab => 'user_group'}},
+                                                  :id => "user_group") %></li>
+
+
+      </ul>
+    </div>
+
+    <div class="tabWrap" id="tabWrap">
+      <%= render :partial => "contact" %>
+    </div>
+  </div>
+</div>
+</div>
+<script type="text/javascript">
+    $('show_user').style.display = '';
+    $('contact').className = "on";
+    function show_ajax(obj, id, tab) {
+        var str = $('tabWrap').innerHTML;
+        //alert(str)
+        str = str.replace(str, "<div align='center'><span id='show_image'>読み込み中...</span></div>");
+        $('tabWrap').innerHTML = str;
+        $($('tab_class').value).className = "";
+        var that = obj;
+        if (tab == 'contact' || tab == 'add_contact'
+                || tab == 'contact_confirmation_user' || tab == 'user_create_new_task') {
+            $('contact').className = "on";
+            $('tab_class').value = 'contact';
+        }
+        else if (tab == 'user_message' || tab == 'user_send_message' || tab == 'user_receive_message') {
+            $('user_message').className = "on";
+            $('tab_class').value = 'user_message';
+        }
+        else if (tab == 'user_task' || tab == 'user_new_task'
+                || tab == 'user_receive_task' || tab == 'user_finish_task'
+                || tab == 'user_unfinished_task'
+                || tab == 'user_task_confirm') {
+            $('user_task').className = "on";
+            $('tab_class').value = 'user_task';
+        }
+        else if (tab == "user_group" || tab == "user_create_group" || tab == "user_join_group"
+                || tab == "user_group_create_new_task" ) {
+            $("user_group").className = "on";
+            $("tab_class").value = "user_group";
+        }
+
+    }
+
+    function add_tr() {
+        var file_id= new Date().getTime();
+        var tr = document.createElement("tr");
+        var input = document.createElement("input");
+        var  file_field_id = "file_field_"+file_id + Math.random()
+        var td_1 = document.createElement("td");
+        input.setAttribute("name", "documents["+file_id+"][datafile]");
+        input.setAttribute("type", "file");
+        tr.setAttribute("id",file_field_id);
+        td_1.appendChild(input);
+        var td_2 = document.createElement("td");
+        var link = document.createElement("a");
+        link.setAttribute("href", "javascript:void(0);");
+        link.setAttribute("onclick","$('"+file_field_id+"').remove();");
+        link.innerHTML = "delete";
+        td_2.appendChild(link);
+        tr.appendChild(td_1);
+        tr.appendChild(td_2);
+        $('file_field').appendChild(tr);
+    }
+</script>

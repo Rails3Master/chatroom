@@ -1,0 +1,12 @@
+<% for name in [:info, :warning, :error, :notice] %>
+	<% if flash[name] %>
+    <div id='message' class="mt10">
+        <div class='flash_notice'>
+            <p>
+                <%= flash[name] %>
+            </p>
+            <% flash[name] = nil %>
+        </div>
+    </div>
+	<% end %>
+<% end %>

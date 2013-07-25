@@ -1,0 +1,41 @@
+<table width="96%">
+  <tr>
+    <th><%= t("user.id") %></th>
+    <td>
+      <%= f.text_field :id, :class => 'w180',
+                       :value => (params[:user][:id] if params[:user]) %>
+    </td>
+    <th> <%= t("user.name")%></th>
+    <td>
+      <%= f.text_field :name, :class => 'w180',
+                       :value => (params[:user][:name] if params[:user]) %>
+    </td>
+  </tr>
+  <tr>
+    <th><%= t("user.tel") %></th>
+    <td>
+      <%= f.text_field :tel, :class => 'w180',
+                       :value => (params[:user][:tel] if params[:user]) %>
+    </td>
+    <th> <%= t("user.email") %></th>
+    <td>
+      <%= f.text_field :email, :class => 'w180',
+                       :value => (params[:user][:email] if params[:user]) %>
+    </td>
+  </tr>
+  <tr>
+    <th> <%= t("task.title") %></th>
+    <td>
+      <%= text_field_tag "task[title]", '', :class => 'w180',
+                         :value => (params[:task][:title] if params[:task]) %>
+    </td>
+  </tr>
+  <tr>
+    <th> <%= t("group.name") %></th>
+    <td>
+      <%= text_field_tag "group[name]", '', :class => 'w180',
+                         :value => (params[:group][:name] if params[:group]) %>
+    </td>
+  </tr>
+</table>
+

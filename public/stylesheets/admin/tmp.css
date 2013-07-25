@@ -1,0 +1,80 @@
+﻿@charset "utf-8";
+/* CSS Document */
+
+
+/* ========= globle nav ========= */
+#head .mainNav{
+	width:1228px;
+	margin:0 auto;
+}
+#head .mainNav ul li{
+	float:left;
+}
+#head .mainNav ul li a{
+    float: left;
+    display: block;
+    height: 31px;
+    line-height: 31px;
+    padding: 8px 10px 0px;
+    font-weight: bold;
+    background: url("/admin/images/common/nav_bg.jpg") no-repeat scroll left top transparent;
+
+}
+.mainNav li.nav_course a{
+	background:url(/admin/images/common/nav_course.jpg) no-repeat left top;
+	width:100px;
+}
+.mainNav li.nav_category a{
+	/*background:url(/admin/images/common/nav_category.jpg) no-repeat left top;*/
+	width:100px;
+}
+.mainNav li.nav_mater a{
+     /*background:url(/admin/images/common/nav_mater.jpg) no-repeat left top;*/
+     width:100px;
+ }
+.mainNav li.nav_test a{
+    /*background:url(/admin/images/common/nav_mater.jpg) no-repeat left top;*/
+    width:100px;
+}
+.mainNav li.nav_live a{
+      /*background:url(/admin/images/common/nav_mater.jpg) no-repeat left top;*/
+      width:100px;
+  }
+.mainNav li.nav_lib a{
+    /*background:url(/admin/images/common/nav_mater.jpg) no-repeat left top;*/
+    width:100px;
+}
+.mainNav li.nav_home a{
+    /*background:url(/admin/images/common/nav_mater.jpg) no-repeat left top;*/
+    width:100px;
+}
+
+.mainNav li.nav_mater a.on,.mainNav li.nav_mater a:hover{
+	/*background:url(/admin/images/common/nav_mater_on.jpg) no-repeat left top; */
+	width:100px;
+}
+.subnav{
+	background:url(/admin/images/head_bg.jpg) repeat-x left top;
+	height:42px;
+}
+.subnav .items{
+	width:1228px;
+	margin:0 auto;
+}
+.subnav .items ul li{
+	float:left;
+	padding-top:14px;
+}
+.subnav .items ul li a{
+	color:#545554;
+	text-decoration:none;
+	margin-right:15px;
+	margin-left:5px;
+	background:url(/admin/images/tri02.jpg) no-repeat left 50%;
+	padding-left:12px;
+}
+.subnav .items ul li a:hover,.subnav .items ul li a.selected{
+	color:#de5f01;
+	font-weight:bold;
+	background:url(/admin/images/tri02_on.jpg) no-repeat left 50%;
+}

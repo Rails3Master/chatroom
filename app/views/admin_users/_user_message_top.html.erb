@@ -1,0 +1,17 @@
+<div class="mainNav">
+  <div id="show_user_message" class="items" style="display:none;">
+    <ul class="manager clearfix">
+      <li><%= link_to_remote("ユーザーが送ったメッセージ一覧",
+                             {:update => 'tabWrap',
+                              :url => {:id => params[:id], :tab => 'user_send_message'},
+                              :loading => "show_ajax(this,'#{params[:id]}','user_send_message')"},
+                             :id => 'user_send_message') %></li>
+      <li><%= link_to_remote("ユーザーの受信メッセージ一覧",
+                             {:update => 'tabWrap',
+                              :url => {:id => params[:id], :tab => 'user_receive_message'},
+                              :loading => "show_ajax(this,'#{params[:id]}','user_receive_message')"},
+                             :id => 'user_receive_message') %></li>
+    </ul>
+  </div>
+</div>
+<%= render :partial => "layouts/messages" %>

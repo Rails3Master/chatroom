@@ -1,0 +1,69 @@
+/*单元格选中*/
+.excelBody .CodeThat9{
+	padding:2px;
+	border:none;
+	background-color:#CCDDEE;
+	overflow:hidden;
+	min-height:20px;
+	/*height:auto !important;
+	height:20px;*/
+	width:200px;
+}
+/*单元格选中后恢复*/
+.excelBody .CodeThat7{
+	padding:2px;
+	border:none;
+	overflow:hidden;
+	min-height:20px;
+	/*height:auto !important;
+	height:20px;*/
+	width:200px;
+}
+
+/*整列都选中*/
+.excelBody .CodeThat8{
+	padding:2px;
+	border:none;
+	overflow:hidden;
+	background-color:#EAECF5;
+	min-height:20px;
+	width:200px;
+	
+}
+/*列头部样式恢复*/
+.fixColsHead .CodeThat3{
+	background-color:#C9D8F0;
+	height:20px;
+	width:200px;
+	padding:2px;
+	position:relative;
+	overflow:hidden;
+	
+}
+/*列头部选中*/
+.fixColsHead .CodeThat4{
+	background-color:#F6D087;
+	height:20px;
+	width:200px;
+	padding:2px;
+	position:relative;
+	overflow:hidden;
+}
+/*行头部选中样式*/
+.fixRowsHead .CodeThat1{
+	background-color:#F6D087;
+	height:20px;
+	width:30px;
+	padding:2px 0;
+	position:relative;
+	overflow:hidden;
+}
+/*行头部恢复样式*/
+.fixRowsHead .CodeThat2{
+	background-color:#C9D8F0;
+	height:20px;
+	width:30px;
+	padding:2px 0;
+	position:relative;
+	overflow:hidden;
+}

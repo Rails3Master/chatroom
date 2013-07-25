@@ -1,0 +1,153 @@
+<h1 id="_roomTitle" class="contentHl mainContentHl">
+				<span class="_roomTitleText autotrim">
+					<span class="_nameAid534538"><%=@chat_info.name%></span>
+				</span>
+  <span class="_pin _pinRid4961682 ico19PinOff"></span>
+</h1>
+<div class="chatRoomHeaderBtn btnGroup">
+  <div id="_groupCall" class="_button btnLarge _cwBN button" style="display: none;" role="button">
+    <span class="icoFontVideoChat icoSizeLarge"></span>
+    <span class="icoTextHide">开始ChatRoom Live</span>
+  </div>
+  <div id="_directCall" class="_joinLive _button btnLarge _cwBN button" style="display: inline-block;" role="button" data-aid="534538">
+    <span class="icoFontVideoChat icoSizeLarge"></span>
+    <span class="icoTextHide">开始ChatRoom Live</span>
+  </div>
+  <div id="_chatFileAll" class="_button btnLarge btnIconDouble _cwBN button btnDisable" style="" role="button" aria-disabled="true">
+    <span class="icoFontFile icoSizeLarge"></span>
+    <span class="icoTextHide">文件</span>
+    <span class="icoFontTriangleDown"></span>
+  </div>
+  <div id="_chatRoomSetting" class="_button btnLarge btnIconDouble _cwBN button" style="display: inline-block;" role="button">
+    <span class="icoFontSetting icoSizeLarge"></span>
+    <span class="icoTextHide">设定聊天模式</span>
+    <span class="icoFontTriangleDown"></span>
+  </div>
+</div>
+
+<div id="_chatContent" class="chatContent">
+<div id="_timeLine" role="main" class="chatTimeLine" style="height: 100%">
+  <%= render :partial => "/user/chat_time_line" %>
+</div>
+<%#= periodically_call_remote :update => 'message', :url => {:controller=> "chat", :action => 'get_update_message'}, :frequency => 5 %>
+<div id="_chatSendArea" class="chatSendArea">
+  <div id="_mainContentExpandLeft" role="button" aria-label="放大窗口显示" data-delay="0" class="_showDescription windowBtnL"><span class="windowBtnIcon icoFontTriangleLeft"></span></div>
+  <div id="_mainContentExpandRight" role="button" aria-label="放大窗口显示" data-delay="0" class="_showDescription windowBtnR"><span class="windowBtnIcon icoFontTriangleRight"></span></div>
+  <div class="chatSendAreaContent">
+    <div class="chatSendAreaContentInner">
+      <div class="chatSendAreaContentShadow">
+        <ul id="_fileSendStatusArea" style="display: none;" class="fileSendStatusArea"></ul><!-- .fileSendStatusArea -->
+        <div id="_chatSendToolbar" class="chatSendToolbar clearfix" style="">
+          <ul id="_chatSendTool" class="chatSendTool" style="">
+            <li id="_emoticon" role="button" class="_showDescription" aria-label="表情文字：可以表达自己的心情" onclick="showEmoticonList()">
+              <span class="icoFontEmoticon icoSizeLarge"></span>
+            </li>
+            <li id="_to" role="button" class="_showDescription" aria-label="To：可以唤起对方注意"><span class="icoFontTo icoSizeLarge"></span></li>
+            <li id="_file" role="button" class="_showDescription" aria-label="可以发送文件" style="display: inline-block;"><span class="icoFontSendFile icoSizeLarge"></span></li>
+          </ul><!-- .chatSendTool -->
+          <span id="_fileStatus" style="display:none"><img src="/user/images/img_loader_white.gif" alt="Loading"></span>
+          <div class="chatSendToolbarRight">
+					  <span id="_sendEnterActionArea" role="button" aria-labe="" class="enterActionArea" style="">
+					  <span role="checkbox" aria-checked="true" id="_sendEnterAction" type="checkbox" class="_cwCB _cwCBChecked ico15CheckboxActive" data-theme=""><input type="hidden" value="on"></span>
+                      <span class="icoFontParagraph icoSizeSmall"></span><span class="icoTextHide">改行</span>
+					  </span>
+            <div id="_sendButton" role="button" tabindex="2" class="button btnPrimary _cwBN" aria-disabled="false" onclick ="send_message()">
+              发送 <%#= link_to_remote "发送", :url => {:controller=>"chat", :action => "send_message"},:with=>"'chat_text='+$('_chatText').value"%>
+            </div>
+          </div><!-- .chatSendToolbarRight -->
+        </div><!-- .chatSendToolbar -->
+        <div id="_editInfo" class="chatSendTextareaInfobar editInfo" style="display:none">编辑留言<div id="_editCancel" role="button" class="closeAction icoFontCancel"></div></div>
+        <div id="_externalInfo" class="_externalMark otherInfo" style="display:none"><span class="ico35Other">包含组织外用户的聊天</span></div>
+        <div id="_chatTextArea" class="chatSendTextarea" style="overflow-y: hidden;" >
+          <textarea id="_chatText" tabindex="1" style="width: 1016px; height: 55px;" placeholder="在此处输入信息内容
+				(按Shift+Enter键改行)" onkeydown="Enter_send_message(event)"></textarea>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<div id="_subContent" class="subContent" style=" top: 42px;">
+  <div id="_subContentArea" class="subContentArea" >
+    <div id="_subContentAreaContent">
+      <div class="subRoomInfomation">
+        <div id="_subRoomInfoArea" class="subContentSection">
+          <div id="_roomRequestArea" class="alert alertWarning" style="display: none;"></div>
+          <div id="_subRoomInfoInner" class="subContentAreaInner">
+            <div id="_subEditRoomInfo" role="button" class="_showDescription subContentActionBtn button" aria-label="编辑聊天信息" style="display: block;"><span class="icoFontActionEdit icoSizeLarge"></span></div>
+            <div id="_subRoomInfoTitle" class="chatroomTitle clearfix">
+              <img id="_subRoomIcon" class="avatar" src="/user/images/37486.rsz.jpg">
+              <div class="chatroomTitleMeta">
+                <p id="_subRoomName"><span class="_nameAid534538"><%=@chat_info.name%></span></p>
+                <div id="_subRoomProfileLinkArea" style="display: block;">
+                  <div id="_subRoomProfileLink" class="_openProfile" data-aid="534538"><a>设置个人资料</a></div>
+                </div>
+                <div id="_subRoomJoinLinkArea" class="selected" style="display: none;">
+                  <a id="_subRoomJoinLink" target="_blank">邀请链接<span class="icoFontLinkBlank marginLeft"></span></a>
+                </div>
+              </div>
+            </div>
+            <div id="_subRoomDescriptionArea" class="subContentGroup" style="">
+              <div id="_subRoomDescriptionWrapper" class="subRoomDescription subRoomDescriptionOverflow" style="height: 50px; visibility: visible;">
+                <div id="_subRoomDescription"><span class="emptyContent">无概要</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="subRoomMember">
+        <div id="_subEditMember" role="button" class="_showDescription subContentActionBtn button" aria-label="编辑成员" style="display: none;"><span class="icoFontAddBtn icoSizeLarge"></span></div>
+        <div id="_subRoomMemberArea" class="subContentAreaInner" style="display: none;">
+          <div class="subContentLabel"><p>成员<span id="_subRoomMemberNum" style="display: none;"></span></p></div>
+          <div id="_showOnlyAdmin" class="subRoomMemberShowOnlyAdmin" style="display: none;">※只有管​​理员可以看到</div>
+          <div id="_subRoomMemberList" class="subRoomMemberList" style="display: none;"></div>
+        </div>
+      </div>
+
+      <div class="subRoomTaskArea">
+        <div class="subContentLabel"><p>任务<span id="_roomTaskNum" style="display: none;"></span></p></div>
+        <div id="_subRoomTaskAddArea" class="subContentSection taskAddArea" style="">
+          <div id="_taskAddArea" class="subContentAreaInner taskContentAreaClose">
+            <div class="_taskDescriptionAddArea">
+              <div id="_taskDescriptionAdd" class="taskSendTextarea">
+                <textarea id="_taskNameInput" tabindex="3" placeholder="请输入任务" style="overflow-y: hidden;" onclick="showTaskAddMeta()"></textarea>
+              </div>
+            </div>
+            <div id="_taskAddMeta" style="display: none;" >
+              <div id="_taskAssignAddArea" style="position:relative" class="taskAssignAddArea controlGroup">
+                <label class="controlLabel">负责人：</label>
+                <div id="_taskAssignAdd" class="controlContent">
+                  <div id="_taskQuickWrapper">
+                    <div id="_assignBox" class="taskAssignBox"></div>
+                    <span id="_inchargeEmpty" class="emptyContent" style="">请选择执行</span>
+                  </div>
+                  <div id="_assignButton" class="button btn24" onclick="showSelectMember()"><span class="icoFontAddBtn icoSizeLarge"></span><span class="icoTextHide">负责人</span></div>
+                </div>
+              </div>
+              <div id="_taskLimitAddArea" class="taskLimitAddArea controlGroup">
+                <label class="controlLabel">期限：</label>
+                <div id="_taskLimitAdd" class="controlContent">
+                  <%= calendar_date_select_tag "_limit_time", "", :time => false, :valid_date_check => "date >= (new Date()).stripTime()",:style=>"width:120px" %>
+                </div>
+              </div>
+              <div class="taskAddBtnArea">
+                <div id="_taskAddButton" role="button" tabindex="4" class="button btnPrimary cwTextUnselectable" onclick="addTask()">添加任务</div>
+                <div id="_taskCancelButton" role="button" tabindex="5" class="button cwTextUnselectable" onclick="hideAddTask()">取消</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="_subRoomMyTaskList" class="myListShow">
+          <span role="checkbox" aria-checked="true" id="_subRoomMyTaskListShow" type="checkbox" checked="checked" style="" class="_cwCB _cwCBChecked ico15CheckboxActive" data-theme="" aria-label="只显示我的任务"><input type="hidden" value="on"></span><label class="_cwCBLabel cwTextUnselectable linkStatus" for="_subRoomMyTaskListShow">只显示我的任务</label>
+        </div>
+        <div id="_subRoomTaskArea">
+          <ul id="_subRoomTaskList" class="subContentTask"><div class="emptyAdminContent"><img src="/user/images/img_task_empty.png"><p>现在没有任务</p></div></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+

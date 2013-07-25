@@ -1,0 +1,41 @@
+<%= render :partial => "user_task_top" %>
+<div class="pgtitle clearfix">
+  <h2 class="h2_title">任務を完成して確認一覧</h2>
+</div>
+<table class="tlist" width="100%">
+  <tr>
+    <th width="4%">Id</th>
+    <th width="10%">Title</th>
+    <th width="35%">Description</th>
+    <th width="10%">Limit time</th>
+    <th width="10%">Attachment</th>
+    <th width="15%">Operation</th>
+  </tr>
+  <% if @tasks.blank? %>
+      <tr>
+        <td colspan="11" class="ac">該当するデータが見つかりません。</td>
+      </tr>
+  <% else %>
+      <% @tasks.each do |task| %>
+          <tr>
+            <td><%= task.id %></td>
+            <td><%= task.title %></td>
+            <td><%= task.description %></td>
+            <td><%= task.limit_time %></td>
+            <td><%#= link_to("#{file_path(task)}",{:update => 'tabWrap',
+                                                 :url => {:task_id => task.id, :tab => 'user_task_document'},
+                                                 :loading => "show_ajax(this,'#{params[:id]}','user_unfinished_task')"}) %> </td>
+            <td align="center">
+              <li><%= link_to_remote("confirm",
+                                     {:update => 'tabWrap',
+                                      :url => {:id => params[:id], :task_id => task.id, :tab => 'user_confirm_task'},
+                                      :loading => "show_ajax(this,'#{params[:id]}','user_task_confirm')"},
+                                     :id => 'user_task_confirm') %></li>
+            </td>
+          </tr>
+      <% end %>
+  <% end %>
+</table>
+<script type="text/javascript">
+    $('show_user_task').style.display = '';
+</script>

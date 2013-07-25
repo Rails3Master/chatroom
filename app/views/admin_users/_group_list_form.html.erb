@@ -1,0 +1,40 @@
+
+<h3>検索結果</h3>
+<div class="pgInfo">
+  <p class="total">合計：<%= @groups.total_entries %>件</p>
+  <%= will_paginate @groups, :params => params %>
+</div>
+
+<table class="tlist" width="100%">
+  <tr>
+    <th width="4%">ID</th>
+    <th width="20%">群主名</th>
+    <th>群组名</th>
+    <th width="15%">操作</th>
+  </tr>
+  <% if @groups.blank? %>
+      <tr>
+        <td colspan="11" class="ac">該当するデータが見つかりません。</td>
+      </tr>
+  <% else %>
+      <% @groups.each do |group| %>
+          <tr>
+            <td><%= group.id %></td>
+            <td><%= group.main_group %></td>
+            <td><%= group.name %></td>
+
+            <td class="action">
+              <%= link_to "详细", :action => 'group_detail', :id => group.id %> |
+              <%= link_to "编辑", :action => 'group_edit', :id => group.id %> <br/>
+              <%= link_to "删除组员", :action => 'group_user_delete', :id => group.id %>
+              <br/>
+              <%= link_to "删除", {:controller => "/admin/user", :action => 'group_deleted', :id => group.id}, :confirm => "削除してもよろしいでしょうか？" %>
+            </td>
+          </tr>
+      <% end %>
+  <% end %>
+</table>
+<div class="pagination pageBtm pgInfo">
+  <p class="total">合計：<%= @groups.total_entries %>件</p>
+  <%= will_paginate @groups, :params => params %>
+</div>

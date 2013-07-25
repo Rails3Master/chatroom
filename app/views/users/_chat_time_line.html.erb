@@ -1,0 +1,105 @@
+<div class="dateHead">
+  <div class="dateContent">
+    <span class="icoFontClock"></span>
+    <span class="dateText">2013年5月31日</span>
+  </div>
+</div>
+<%@messages.each do |message|%>
+    <%
+       user = User.find_by_id(message.user_id)
+    %>
+    <% if user.id == @current_user.id%>
+        <div id="_messageId<%=message.id%>" data-rid="4961682" data-mid="<%=message.id%>"
+             class="_message chatTimeLineMessage chatTimeLineMessageAnim clearfix chatTimeLineMessageMine"
+             onmouseover="showOperating(this.id)" onmouseout="clearOperating(this.id)">
+          <div class="_chatTimeLineMessageBox chatTimeLineMessageInner">
+            <div class="_speaker avatarSpeaker">
+              <% if user.photo_path.present? %>
+                  <%= image_tag(user.photo_path) %>
+              <% else %>
+                  <img class=" _avatarHoverTip _avatarClickTip avatarClickTip avatarMedium _avatar _avatarAid534538" data-aid="534538" src="/user/images/162528.rsz.jpg">
+              <% end %>
+            </div>
+            <div class="chatTimeLineMessageArea clearfix">
+              <div class="chatTimeLineItemHeader autotrim">
+                <p class="_speakerName chatName"><span class="_nameAid534538"><%=user.name%></span></p>
+                <p class="chatNameOrgname"><span class="cw_onm534538"></span></p>
+              </div>
+              <pre><%=message.content%></pre>
+            </div>
+            <div class="_timeStamp timeStamp" data-deleted="0" data-tm="1369981052"><%=message.created_at.strftime("%m月%d日 %H:%M")%></div>
+          </div>
+          <div class="_moveArrow chatTimeLineMoveArrow selected"></div>
+          <div class="_cwABShowArea actionArea" style="display: none;">
+            <ul role="toolbar" class="_messageActionNav cwTextUnselectable actionNav">
+              <li role="button" class="_cwABAction linkStatus" data-cwui-ab-id="99663555" data-cwui-ab-type="quote">
+                <span class="icoFontActionQuote"></span>
+                <span class="_showAreaText showAreatext">引用</span>
+              </li>
+              <li role="button" class="_cwABAction linkStatus" data-cwui-ab-id="99663555" data-cwui-ab-type="task">
+                <span class="icoFontActionTask"></span>
+                <span class="_showAreaText showAreatext">Task</span>
+              </li>
+              <li role="button" class="_cwABAction linkStatus" data-cwui-ab-id="99663555" data-cwui-ab-type="edit">
+                <span class="icoFontActionEdit"></span>
+                <span class="_showAreaText showAreatext">编辑</span>
+              </li>
+              <li role="button" class="_cwABAction linkStatus" data-cwui-ab-id="99663555" data-cwui-ab-type="link">
+                <span class="icoFontActionLink"></span>
+                <span class="_showAreaText showAreatext">链接</span>
+              </li>
+              <li role="button" class="_cwABMoreTip linkStatus" data-cwui-ab-id="99663555">
+                <span class="icoFontActionMore"></span>
+                <span class="_showAreaText showAreatext"></span>
+              </li>
+            </ul>
+          </div>
+        </div>
+    <% else%>
+        <div id="_messageId<%=message.id%>" data-rid="4961682" data-mid="<%=message.id%>"
+             class="_message chatTimeLineMessage chatTimeLineMessageAnim clearfix"
+             onmouseover="showOperating(this.id)" onmouseout="clearOperating(this.id)">
+          <div class="_chatTimeLineMessageBox chatTimeLineMessageInner">
+            <div class="_speaker avatarSpeaker">
+              <% if user.photo_path.present? %>
+                  <%= image_tag(user.photo_path) %>
+              <% else %>
+                  <img class=" _avatarHoverTip _avatarClickTip avatarClickTip avatarMedium _avatar _avatarAid534538" data-aid="534538" src="/user/images/162528.rsz.jpg">
+              <% end %>
+            </div>
+            <div class="chatTimeLineMessageArea clearfix">
+              <div class="chatTimeLineItemHeader autotrim">
+                <p class="_speakerName chatName"><span class="_nameAid534538"><%=user.name%></span></p>
+                <p class="chatNameOrgname"><span class="cw_onm534538"></span></p>
+              </div>
+              <pre><%=message.content%></pre>
+            </div>
+            <div class="_timeStamp timeStamp" data-deleted="0" data-tm="1369981052"><%=message.created_at.strftime("%m月%d日 %H:%M")%></div>
+          </div>
+          <div class="_moveArrow chatTimeLineMoveArrow selected"></div>
+          <div class="_cwABShowArea actionArea" style="display: none;">
+            <ul role="toolbar" class="_messageActionNav cwTextUnselectable actionNav">
+              <li role="button" class="_cwABAction linkStatus" data-cwui-ab-id="99663421" data-cwui-ab-type="reply">
+                <span class="icoFontActionReply"></span>
+                <span class="_showAreaText showAreatext">回信</span>
+              </li>
+              <li role="button" class="_cwABAction linkStatus" data-cwui-ab-id="99663421" data-cwui-ab-type="quote">
+                <span class="icoFontActionQuote"></span>
+                <span class="_showAreaText showAreatext">引用</span>
+              </li>
+              <li role="button" class="_cwABAction linkStatus" data-cwui-ab-id="99663421" data-cwui-ab-type="task">
+                <span class="icoFontActionTask" ></span>
+                <span class="_showAreaText showAreatext">Task</span>
+              </li>
+              <li role="button" class="_cwABAction linkStatus" data-cwui-ab-id="99663421" data-cwui-ab-type="link">
+                <span class="icoFontActionLink"></span><span class="_showAreaText showAreatext">链接</span>
+              </li>
+              <li role="button" class="_cwABMoreTip linkStatus" data-cwui-ab-id="99663421">
+                <span class="icoFontActionMore"></span><span class="_showAreaText showAreatext"></span>
+              </li>
+            </ul>
+          </div>
+        </div>
+    <%end%>
+<%end%>
+<div id="_messageIdEnd" class="actionBarSpacer"></div>

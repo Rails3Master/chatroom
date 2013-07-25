@@ -1,0 +1,39 @@
+<div id="error_messages"></div>
+<div align="center">
+  <% form_for :user, :url => {:controller => "admin/user", :action => :user_import_csv},
+              :html => {:multipart => true,"id"=>"form1"} do |f| %>
+      <div class="pgtitle">
+        <h2 class="h2_title">ユーザー一括登録（CSV）：</h2>
+        <hr class="cb"/>
+      </div>
+      <table class="tform mb10">
+        <tr>
+          <th width="15%">ユーザー一括登録（CSV）：</th>
+          <td><%= f.file_field :csv %><%= submit_tag "一括登録",:onclick=>"return checkCsv()" %>
+            <br/><br/>
+            ユーザー一括登録（CSV）  <%= link_to 'テンプレート ', :action => :user_sample_csv %>  ダウンロード
+          </td>
+        </tr>
+      </table>
+  <% end %>
+</div>
+<script type="text/javascript" language="javascript">
+    $('show_user').style.display = '';
+    $("file_upload").className = "selected";
+    function checkCsv(){
+        var filename = document.getElementById("user_csv");
+        if(filename.value == ""){
+            alert("文件不能为空");
+            return false;
+        } else if( !filename.value.match(/.csv/i)){
+            alert('文件格式无效！');
+            form1.reset();
+            filename.value = "";
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+</script>
+

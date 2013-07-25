@@ -1,0 +1,38 @@
+/* ========== naviTable ========= */
+.login #head{
+	background:url(/admin/images/head_line.jpg) repeat-x left bottom;
+	height:81px;
+}
+.loginBox{
+	width:495px;
+	margin:38px auto 85px auto;
+}
+.loginBox h2{
+	background-color:#ff8f22;
+	background:#ff8f22 url(/admin/images/icon_login.jpg) no-repeat 10px 50%;
+	padding:3px 30px;
+	color:#fff;
+	font-size:12px;
+}
+.loginBox .innerbox{
+	border:1px solid #b2b2b2;
+	background-color:#f2f2f2;
+	padding:0 30px;
+	height:220px;
+}
+.loginBox .innerbox table{
+	margin:30px auto;
+}
+input.W260{
+	width:260px;
+}
+.btn_login{
+	width:114px;
+	height:30px;
+	border:none;
+	padding:0;
+	cursor:pointer;
+	overflow:hidden;
+	background:url(/admin/images/login.jpg) no-repeat left top;
+	margin-top:15px;
+}

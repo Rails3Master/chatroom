@@ -1,0 +1,53 @@
+<table class="tform mb10" width="100%">
+  <tr>
+    <th>name</th>
+    <td><%= user.name %></td>
+    <th>login</th>
+    <td><%= user.login %>
+    </td>
+  </tr>
+  <tr>
+    <th>company name</th>
+    <td colspan="3">
+      <%= user.company_name %>
+    </td>
+  </tr>
+  <tr>
+    <th>写真</th>
+    <td colspan="3">
+      <% if user.photo_path.present? %>
+          <%= image_tag(user.photo_path) %>
+      <% else %>
+          <%= "" %>
+      <% end %>
+    </td>
+  </tr>
+  <tr>
+    <th width="15%">電話番号</th>
+    <td><%= user.tel %>
+    </td>
+    <th>郵便番号：〒</th>
+    <td>
+      <%= user.zip_code %>
+    </td>
+  </tr>
+  <tr>
+    <th>都道府県名</th>
+    <td>
+      <div id="addr1_change">
+        <%= user.pref %></div>
+    </td>
+    <th>市区町村～番地</th>
+    <td>
+      <div id="addr2_change">
+        <%= user.address2 %>
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <th>メールアドレス</th>
+    <td><%= user.email %></td>
+    <th>skype</th>
+    <td><%= user.skype_id %></td>
+  </tr>
+</table>

@@ -1,0 +1,34 @@
+<div id="add_course_notice"></div>
+<div class="pgtitle">
+  <h2 class="h2_title">任務情報</h2>
+  <div class="btnbar">
+
+    <%= button_to_function"戻る", :onclick => "window.location.href='/admin/task/index'" %>
+  </div>
+  <hr class="cb" />
+</div>
+<table class="tform mb10" width="100%">
+  <tr>
+    <th width="16%" >作成したタスクのユーザー名</th>
+    <td colspan="3"><%= @task.get_user_name(@task.user_id) %></td>
+  </tr>
+  <tr>
+    <th>タイトル</th>
+    <td><%= @task.title %></td>
+  </tr>
+  <tr rowspan = "2">
+    <th>説明</th>
+    <td><%= @task.description %></td>
+  </tr>
+  <tr>
+    <th>期限</th>
+    <td><%= @task.limit_time %></td>
+  </tr>
+  <tr>
+    <th>確認情況</th>
+    <td><%= @task.confirm(@task.confirm_flag) %></td>
+  </tr>
+</table>
+<script type="text/javascript" language="javascript">
+    $('show_task').style.display='';
+</script>

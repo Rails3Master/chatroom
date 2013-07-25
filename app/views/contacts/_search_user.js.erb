@@ -1,0 +1,9 @@
+<% if @users.size > 0 %>
+$('#_contactWindowCheckAllButton').attr('class','_button btnLarge _cwBN button');
+$('#_contactWindowCheckAllButton').attr('aria-disabled','false');
+$('#_contactWindowPager').html(<%= will_paginate_remote(@users, {:params => {:condition => @condition}}) %>);
+<% else %>
+$('#_contactWindowCheckAllButton').attr('class','_button btnLarge _cwBN button');
+$('#_contactWindowCheckAllButton').attr('aria-disabled','false');
+$('#_contactWindowPager').html('');
+<% end %>

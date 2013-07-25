@@ -1,0 +1,25 @@
+<%= render :partial => 'contact_top' %>
+<div class="pgtitle clearfix">
+  <h2 class="h2_title">连絡先の一覧</h2>
+
+  <div class="btnbar">
+    <%= link_to_remote("连絡先の追加",
+                       {:update => 'tabWrap',
+                        :url => {:id => params[:id], :tab => 'add_contact'},
+                        :loading => "show_ajax(this,'#{params[:id]}','add_contact')"},
+                       :id => 'add_contact') %>
+    <%= link_to_remote("新规任務",
+                       {:update => 'tabWrap',
+                        :url => {:id => params[:id], :tab => 'user_create_new_task'},
+                        :loading => "show_ajax(this,'#{params[:id]}','user_create_new_task')"}) %>
+
+  </div>
+</div>
+
+<div class="searchBox">
+  <%= render :partial => 'user_contact_list_form' %>
+</div>
+<script type="text/javascript">
+    $('show_contact').style.display = '';
+    $("nav_contact").className = "selected";
+</script>

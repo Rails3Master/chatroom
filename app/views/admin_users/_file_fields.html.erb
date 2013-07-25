@@ -1,0 +1,12 @@
+<tr id="file_field_<%= @file_id %>">
+  <td>
+    <%= file_field_tag("documents[#{@file_id}][datafile]") %>
+  </td>
+  <td><input type="button" id="delRow" name="delRow" onClick="$('file_field_<%= @file_id %>').remove();" value="删除行"/>
+  </td>
+</tr>
+
+
+
+
+

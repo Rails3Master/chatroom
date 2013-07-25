@@ -1,0 +1,62 @@
+<iframe name="iframe" style="display:none;" width="800px" height="400px">
+</iframe>
+<p align="center"><%= error_messages_for :task %></p>
+<% form_for :task, :url => {:controller => "admin/user", :action => 'user_create_new_task'}, :html => {:multipart => true, :target => 'iframe'} do |g| %>
+    <div class="pgtitle clearfix">
+      <h2 class="h2_title">任務登録</h2>
+
+      <div class="btnbar">
+        <%= button_to_function 'Submit', "this.form.action='#{url_for :action => 'user_create_new_task'}';
+  this.form.target='_self';this.form.submit()" %>
+      </div>
+    </div>
+    <table class="tform mb10" width="100%">
+      <tr>
+        <th>receiver name<span class="star">*</span></th>
+        <td><%= select(:task, :user_ids, @users.collect { |u| [u.name, u.id] }, {:include_blank => false}, {:multiple => true}) %>
+        </td>
+      </tr>
+
+      <tr>
+        <th>title<span class="star">*</span></th>
+        <td><%= g.text_field :title, :size => 80 %></td>
+      </tr>
+      <tr>
+        <th>limit time<span class="star">*</span></th>
+        <td>
+          <label style='cursor:pointer'>
+          <input class="date w180" id="limit_time" name="task[limit_time]"
+                 onfocus="genearteDateSelect(this, null, 'limit_time', null)"
+                 readonly="readonly" size="30" style="cursor:pointer" type="text"
+                 value="<%= (@task && @task.limit_time) ? @task.limit_time : '' %>"/>
+          <img onclick="genearteDateSelect($('limit_time'), null, 'limit_time', null)" src="/admin/images/calendar_date_select/calendar.png" alt="" style="vertical-align:middle;"/>
+        </label>
+        </td>
+      </tr>
+      <tr>
+        <th>document<span class="star">*</span></th>
+        <td>
+          <table id='file_field'>
+          </table>
+          <div id='add_button'>
+            &nbsp;<%#= link_to_remote '增加', :url => {:controller => 'admin/user',
+                                                                       :action => "add_field",
+                                                                       :file_id => @file_id,
+                                                                       :before => 'this.remove()'} %>
+            <a href="javascript:void(0);" onclick="javascript:add_tr();">Add Document</a>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <th>description<span class="star">*</span></th>
+        <td><%= g.text_area :description, :cols => 100, :rows => 10 %>
+        </td>
+      </tr>
+    </table>
+
+    <%= g.hidden_field :user_id %>
+<% end %>
+<script type="text/javascript" language="javascript">
+    $('show_user_task').style.display = '';
+
+</script>

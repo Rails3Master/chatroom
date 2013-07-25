@@ -1,0 +1,48 @@
+<iframe name="iframe" style="display:none;" width = "800px" height="400px">
+</iframe>
+<% form_for :task, :url =>{ :action => "edit",:id=>@task.id}, :html => { :multipart => true, :target => 'iframe'} do |f|  %>
+    <%= f.error_messages  %>
+<div class="pgtitle">
+  <h2 class="h2_title">任務編集</h2>
+    <div class="btnbar">
+      <%= button_to_function '保存', "this.form.action='#{url_for :action => 'edit'}';this.form.target='_self';this.form.submit()"%>
+     &nbsp;
+      <input type="button" value="戻る" onclick="location.href='/admin/task/index'"/>
+    </div>
+    <hr class="cb" />
+  </div>
+
+  <table width="100%" class="tform mb10">
+    <tr>
+      <th width="16%" >作成したタスクのユーザー名</th>
+      <td colspan="3"><%= @task.get_user_name(@task.user_id) %></td>
+    </tr>
+    <tr>
+      <th>タイトル<span class="star">*</span></th>
+      <td ><%= f.text_field :title, :class => 'inputW250'  %></td>
+    </tr>
+    <tr rowspan = "2">
+      <th>説明<span class="star">*</span></th>
+      <td><%= f.text_area :description,:size => "33x10" %></td>
+    </tr>
+    <tr>
+      <th>期限</th>
+      <td>
+        <label style='cursor:pointer'>
+          <input class="date w180" id="limit_time" name="task[limit_time]"
+                 onfocus="genearteDateSelect(this, null, 'limit_time', null)"
+                 readonly="readonly" size="30" style="cursor:pointer" type="text"
+                 value="<%= ( @task &&  @task.limit_time)?  @task.limit_time : '' %>" />
+          <img onclick="genearteDateSelect($('limit_time'), null, 'limit_time', null)" src="/admin/images/calendar_date_select/calendar.png" alt="" style="vertical-align:middle;"/>
+        </label>
+       </td>
+    </tr>
+    <tr>
+      <th>確認情況</th>
+      <td><%= f.select :confirm_flag, Task::CONFIRM %></td>
+    </tr>
+  </table>
+<%end%>
+<script type="text/javascript" language="javascript">
+    $('show_task').style.display='';
+</script>

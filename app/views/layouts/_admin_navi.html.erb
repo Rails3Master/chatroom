@@ -1,0 +1,83 @@
+<div class="top">
+  <h1>
+    <a href="/admin"><img src="/admin/images/logo.jpg" alt="SchoolCity管理画面" /></a>
+    <%if current_admin.class.to_s != "Admin" && Info.check_backstage(current_admin)%>
+        <span style="color:#ff0000; font-size: 12px; margin-left: 30px; font-weight: normal;">管理者向けのお知らせがあります。<a href="/admin/info/list">こちら</a>からご確認ください。</span>
+    <%end%>
+  </h1>
+  <div class="topInfo">
+    <b><%= current_admin.email %></b>
+    <span class="links"><a href=''>プロフィール編集</a></span>
+    <span class="links"><a href="/admin/admins/change_password">パスワードの変更</a></span>
+    <span class="links"><a href="/admin/admins/logout">ログアウト</a></span> </div>
+</div>
+<div class="mainNav">
+  <ul class="manager clearfix">
+    <li class="nav_admin"><a href="/admins/index">企业管理</a></li>
+    <li class="nav_user"><a href="/admin/user/list">用户管理</a></li>
+    <li class="nav_task"><a href="/admin/task/index">任务管理</a></li>
+    <li class="nav_file"><a href="/admin/file/index">文件管理</a></li>
+    <li class="nav_message"><a href="/admin/message/index">消息管理</a></li>
+    <li class="nav_logout"><a href="/admin/admin/logout">退出</a></li>
+  </ul>
+</div>
+<div class="subnav">
+  <div id="show_user" class="items" style="display:none;">
+    <ul class="manager clearfix">
+      <li><a id="nav_user_list" href="/admin/user/list">用户一览</a></li>
+          <li><a id="user_new" href="/admin/user/sign_request">新建用户</a></li>
+          <li><a id="file_upload" href="/admin/user/user_import_csv">批量新建用户（CSV）</a></li>
+          <li><a id="group_list" href="/admin/user/group_list">群组一览</a></li>
+          <li><a id="group_new" href="/admin/user/group_new">新建群组</a></li>
+    </ul>
+  </div>
+  <div id="show_company" class="items" style="display:none;">
+    <ul class="manager clearfix">
+      <li><a id="nav_company_list" href="/admins/index">企业管理者一览</a></li>
+      <li><a id="company_new" href="/admins/new">新建企业管理者</a></li>
+    </ul>
+  </div>
+  <div id="show_task" class="items" style="display:none;">
+    <ul class="manager clearfix">
+      <li><a id="nav_task_list" href="/admin/task/index">任务一览</a></li>
+    </ul>
+  </div>
+  <div id="show_file" class="items" style="display:none;">
+    <ul class="manager clearfix">
+      <li><a id="image_list" href="/admin/file/index">头像一览</a></li>
+      <li><a id="file_list" href="/admin/file/document_list">文件一览</a></li>
+    </ul>
+  </div>
+  <div id="show_message" class="items" style="display:none;">
+    <ul class="manager clearfix">
+      <li><a id="nav_message_list" href="/admin/message/index">消息一览</a></li>
+    </ul>
+  </div>
+</div>
+<script type="text/javascript">
+    var patrn = /\/admin\/([^\/]+)\/.+/;
+    str = patrn.exec(window.location.pathname) ;
+    if(str){
+        switch(str[1]){
+            case 'admin':
+                $(".nav_admin a")[0].className = "on";
+                break
+            case 'user':
+                $(".nav_user a")[0].className = "on";
+                break
+            case 'task':
+                $(".nav_task a")[0].className = "on";
+                break
+            case 'files':
+                $(".nav_files a")[0].className = "on";
+                break
+            case 'message':
+                $(".nav_message a")[0].className = "on";
+                break
+            case 'admin':
+                $(".nav_admins a")[0].className = "on";
+                break
+
+        }
+    };
+</script>

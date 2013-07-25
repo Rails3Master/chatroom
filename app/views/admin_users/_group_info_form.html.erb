@@ -1,0 +1,47 @@
+<%#
+# To change this template, choose Tools | Templates
+# and open the template in the editor.
+%>
+<% if params[:action] == "group_new" %>
+    <h3>群の中に添加ユーザー</h3>
+<% elsif params[:action] == "group_edit" %>
+    <h3>群の中に編集ユーザー</h3>
+<% elsif params[:action] == "group_user_delete" %>
+    <h3>群の中に削除ユーザー</h3>
+    <% pp params %>
+<% end %>
+
+<table class="tlist" width="100%">
+  <tr>
+    <th width="2%">Choice</th>
+    <th width="10%">ID</th>
+    <th width="18%">Name</th>
+    <th width="15%">Login</th>
+    <th width="18%">Email</th>
+    <th width="10">Skype</th>
+    <% if params[:action] == "group_user_delete" %>
+        <th width="10">Operation</th>
+    <% end %>
+  </tr>
+  <% if @users.blank? %>
+      <tr>
+        <td colspan="11" class="ac">該当するデータが見つかりません。</td>
+      </tr>
+  <% else %>
+      <% @users.each do |user| %>
+          <tr>
+            <td><%= check_box_tag "user_ids[]", user.id, check_flag(@user_ids, user.id) %></td>
+            <td><%= user.id %></td>
+            <td><%= user.name %></td>
+            <td><%= user.login %></td>
+            <td><%= user.email %></td>
+            <td><%= user.skype_id %></td>
+
+            <% if params[:action] == "group_user_delete" %>
+                <td align="center"><%= link_to "delete", :action => 'delete_user_group', :user_id => user.id, :group_id => params[:id] %></td>
+            <% end %>
+          </tr>
+      <% end %>
+  <% end %>
+</table>
+

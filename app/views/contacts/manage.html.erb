@@ -1,0 +1,145 @@
+
+  <div class="_cwFWHeader">
+    <div class="floatHeaderTab clearfix">
+      <ul id="_contactWindowTab">
+        <li id="_contactWindowTabContact" data-type="addcontact" class="floatTabSelect">新しくコンタクトを追加</li>
+        <li id="_contactWindowTabMyContact" data-type="contact" class="">コンタクト一覧<span id="_contactWindowListNum">(87)</span>
+        </li>
+        <li id="_contactWindowTabMyRequest" data-type="myrequest" style="">承認依頼中<span id="_contactWindowMyRequestNum">(2)</span>
+        </li>
+        <li id="_contactWindowTabRequest" data-type="request" style="display: none;">未承認<span id="_contactWindowRequestNum"></span>
+        </li>
+        <li id="_contactWindowTabNoRequest" data-type="norequest" style="display: none;">未追加<span id="_contactWindowNoRequestNum"></span>
+        </li>
+      </ul>
+    </div>
+    <!-- .floatHeaderTab -->
+    <div id="_contactWindowNavigation" class="adminNavigation">
+      <div class="search">
+        <span class="icoFontSearch icSearch"></span><span class="_cwSBCancel icoFontCancel icSearchCancel icoSizeLarge" style="display: none;"></span>
+        <input type="text" id="_contactWindowSearch" class="inputLong _cwSB searchBox" role="search" placeholder="名前、チャットワークID、メールアドレスを入力"
+               onkeyup="selectUserByLike(this.value)" />
+      </div>
+      <div id="_addContactType" class="_contactWindowNavigationItem btnGroup" style="display: inline-block;">
+        <div class="button btnPrimary btnSplit">
+          <div id="_addContactByFacebook" class=" btnSplitMain" data-provider="facebook">Facebookから友達を探す</div>
+          <div id="_addContactBySocialMore" class="btnSplitDropdown"><span class="icoFontTriangleDown"></span></div>
+        </div>
+        <div id="_addContactByMail" class="button">メールアドレスで一括追加</div>
+      </div>
+      <div class="btnCheckGroup">
+        <div id="_contactWindowCheckAllButton" class="_button btnLarge _cwBN button btnDisable" role="button" aria-disabled="true">
+          <span role="checkbox" aria-checked="false" type="checkbox" id="_contactWindowCheckAll" class="_cwCB _cwCBUnchecked ico15Checkbox _checkBox" data-theme=""><input type="hidden" value="on"></span>すべて選択
+        </div>
+        <div id="_contactWindowCheckActionArea" style="display:inline">
+          <div id="_contactWindowAdd" class="_contactWindowNavigationItem _button btnLarge btnDisable _cwBN button" style="display: inline-block;" role="button" aria-disabled="true">コンタクトに追加する</div>
+          <div id="_contactWindowDelete" class="_contactWindowNavigationItem _button btnLarge btnDisable _cwBN button" style="display: none;" role="button" aria-disabled="true">コンタクトから削除</div>
+          <div id="_contactWindowCancel" class="_contactWindowNavigationItem _button btnLarge btnDisable _cwBN button" style="display: none;" role="button" aria-disabled="true">承認依頼をキャンセル</div>
+          <div id="_contactWindowAccept" class="_contactWindowNavigationItem _button btnLarge btnDisable _cwBN button" style="display: none;" role="button" aria-disabled="true">承認する</div>
+        </div>
+      </div>
+      <div class="floatListpager">
+        <!--p id="_contactWindowPagerIndex"></p>
+        <ul id="_contactWindowPager" class="cwTextUnselectable btnNavList _cwBB" role="menu">
+          <li role="menuitemradio" class="_cwBBButton button btnDisable" data-cwui-bb-idx="0" aria-disabled="true">
+            <span class="icoFontArrowDoubleLeft"></span><span class="icoTextHide">最初のページへ移動</span></li>
+          <li role="menuitemradio" class="_cwBBButton button btnDisable" data-cwui-bb-idx="1" aria-disabled="true">
+            <span class="icoFontTriangleLeft"></span><span class="icoTextHide">前のページへ移動</span></li>
+          <li role="menuitemradio" class="_cwBBButton button btnDisable" data-cwui-bb-idx="2" aria-disabled="true">
+            <span class="icoFontTriangleRight"></span><span class="icoTextHide">次のページへ移動</span></li>
+          <li role="menuitemradio" class="_cwBBButton button btnDisable" data-cwui-bb-idx="3" aria-disabled="true">
+            <span class="icoFontArrowDoubleRight"></span><span class="icoTextHide">最後のページへ移動</span></li>
+        </ul-->
+        <div id="_contactWindowPager" class="cwTextUnselectable btnNavList _cwBB" ></div>
+      </div>
+    </div>
+    <!-- adminNavigation -->
+  </div>
+  <!-- ._cwFWHeader -->
+  <div class="_cwFWContent floatWindowContent" style="height: 437px;">
+    <div class="adminWindowAllList">
+      <div id="_contactWindowBox" class="adminAllListArea">
+        <ul id="_contactWindowList" class="contactList">
+          <div class="emptyAdminContent"><img src="/images/imagenew/common/empty/img_contact_empty.png" alt="">
+
+            <p>コンタクトに追加したいユーザーを検索しましょう</p></div>
+        </ul>
+      </div>
+      <!-- .adminAllListArea -->
+      <div class="adminDetailArea contactDetailArea">
+        <div id="_contactDetailArea" class="adminDetailContentArea" style="display: none;" data-aid="">
+          <div class="adminDetailH1">
+            <div class="_profileName adminDetailText autotrim"></div>
+            <div class="closeAction linkIconStatus">
+              <span id="_contactDetailClose" role="button" class="icoFontCancel icoSizeLarge"></span><span class="icoTextHide">閉じる</span>
+            </div>
+          </div>
+          <div class="_profileContactDetailCover profileContactDetailCoverArea"></div>
+          <div class="adminDetailContent contactDetailContent">
+            <div class="controlGroup">
+              <label class="controlLabel">自己紹介:</label>
+
+              <div class="_profileNameDescription controlContent"></div>
+            </div>
+            <div class="controlGroup">
+              <label class="controlLabel">組織名:</label>
+
+              <div class="_profileOrgName controlContent"></div>
+            </div>
+            <div class="controlGroup">
+              <label class="controlLabel">所属:</label>
+
+              <div class="_profileDepartment controlContent"></div>
+            </div>
+            <div class="controlGroup">
+              <label class="controlLabel">役職:</label>
+
+              <div class="_profileTitle controlContent"></div>
+            </div>
+            <div class="controlGroup">
+              <label class="controlLabel">所在地:</label>
+
+              <div class="_profileAddress controlContent"></div>
+            </div>
+            <div class="controlGroup">
+              <label class="controlLabel">URL:</label>
+
+              <div class="_profileUrl controlContent"></div>
+            </div>
+            <div class="controlGroup">
+              <label class="controlLabel longLabel">メールアドレス:</label>
+
+              <div class="_profileEmail controlContent"></div>
+            </div>
+            <div class="controlGroup">
+              <label class="controlLabel longLabel">電話番号（勤務先）:</label>
+
+              <div class="_profileOrgTel controlContent"></div>
+            </div>
+            <div class="controlGroup">
+              <label class="controlLabel longLabel">電話番号（内線）:</label>
+
+              <div class="_profileExtensionTel controlContent"></div>
+            </div>
+            <div class="controlGroup">
+              <label class="controlLabel longLabel">電話番号（携帯）:</label>
+
+              <div class="_profileMobileTel controlContent"></div>
+            </div>
+          </div>
+          <!-- .adminDetailContentInner -->
+        </div>
+        <!-- .adminDetailContentArea -->
+        <div id="_contactDetailBlankArea" class="adminDetailContentArea" style="">
+          <div class="adminDetailNoneContenText">
+            コンタクトをクリックして詳細表示
+          </div>
+        </div>
+        <!-- .adminDetailArea -->
+      </div>
+      <!-- .contactDetailArea -->
+    </div>
+    <!-- .adminWindowAllList -->
+  </div>
+  <!-- ._cwFWContent -->
+  <div style="display:none" class="_cwFWButtonFooter floatWindowFooter"></div>

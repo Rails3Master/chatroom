@@ -1,0 +1,105 @@
+﻿@charset "utf-8";
+/* CSS Document */
+
+#swrap{
+	margin:0px;
+}
+#swrap .btn_close{
+	text-align:right;
+	margin-bottom:5px;
+}
+
+/* ========== pgtitle ========= */
+#swrap .pgtitle{
+	/*margin-bottom:20px;
+	padding:5px 10px;
+	font-size:14px;
+	background-color:#eee;*/
+}
+#swrap  h5{
+	background:url(/admin/images/rect3.jpg) no-repeat 2px 50%;
+	padding-left:15px;
+	font-size:12px;
+	font-weight:normal;
+	margin-bottom:2px;
+}
+
+/* ========== tlist ========= */
+/*#swrap .tlist{
+	border-collapse:collapse;	
+}
+#swrap .tlist th{
+	background-color:#ccc;	
+}
+#swrap .tlist th, #swrap .tlist td{
+	padding:10px;
+	border:1px solid #aaa;
+}*/
+
+
+/* ========== tform ========= */
+/*#swrap .tform{
+	border-collapse:collapse;	
+}
+#swrap .tform th{
+	background-color:#ccc;
+	text-align:left;
+	font-weight:normal;
+}
+#swrap .tform th, #swrap .tform td{
+	padding:10px;
+	border:1px solid #aaa;
+}*/
+/* ========== search ========== */
+.sb-search{
+	border:1px solid #cccccc;
+	padding:10px;
+	margin-bottom:20px;
+	background-color:#f5f5f5;
+}
+/*
+.searchbar{
+	text-align:center;
+	border-top:1px dotted #cccccc;
+	padding-top:10px;
+}*/
+/* ========== email ========= */
+.email_content{
+	border-top:1px solid #e5e5e5;
+	border-bottom:1px solid #e5e5e5;
+	padding:5px 5px;
+	margin:5px 0;
+}
+.replay_box{
+	border:1px solid #cccccc;
+	padding:10px 10px 0 10px;
+	background-color:#f2ffda;
+	margin-bottom:10px;
+}
+/* ========== exam ========= */
+#swrap .exam th, #swrap .exam td{
+	padding:10px;
+	border:1px solid #aaa;
+}
+.exam .numbar{
+	background-color:#eee;	
+}
+.exam .label{
+	background-color:#eee;
+	color:#0066cc;
+}
+.exam p{
+	margin:10px 0;
+}
+/* ========== enquete ========== */
+.summary dl{
+	line-height:24px;
+}
+.summary dl dt {
+    float: left;
+    width: 48px;
+	font-weight:bold;
+}
+.summary dl dd {
+    margin-left: 48px;
+}

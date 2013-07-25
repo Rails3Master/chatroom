@@ -1,0 +1,36 @@
+@charset "utf-8";
+/* CSS Document */
+/*============header=================*/
+#head .mainNav ul li a.on,#head .mainNav ul li a:hover{
+	background:url(/admin/images/green/nav_bg_on.jpg) no-repeat left top;
+}
+.subnav{
+	background: url(/admin/images/green/head_bg.jpg) repeat-x left top;
+}
+#head .top .topInfo span a{
+	background:url(/admin/images/green/tri.png) no-repeat left 0px;
+}
+
+/*===============nav===================*/
+.subnav .items ul li a{
+	background:url(/admin/images/green/tri02.png) no-repeat left 50%;
+}
+.subnav .items ul li a:hover,.subnav .items ul li a.selected{
+	color:#1A3400;
+	background:url(/admin/images/green/tri01.png) no-repeat left 50%;
+}
+
+/* ========== searchBox ========== */
+.searchBox .box{
+	border-top:3px solid #499109;
+}
+
+h3{
+	border-bottom:3px solid #499109;
+}
+
+/* ========== footer ========= */
+
+#footer{
+	border-top:1px solid #499109;
+}

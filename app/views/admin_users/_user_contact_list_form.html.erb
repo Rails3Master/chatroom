@@ -1,0 +1,43 @@
+<p>このページにて、ユーザー情報一覧。</p>
+<table class="tlist" width="100%">
+  <tr>
+    <th width="4%">ID</th>
+    <th width="10%">company name</th>
+    <th width="8%">name</th>
+    <th width="10%">login</th>
+    <th width="18%">email</th>
+    <th width="8%">tel</th>
+    <th width="13%">skype id</th>
+    <th width="24%">Operation</th>
+  </tr>
+  <% if @users.blank? %>
+      <tr>
+        <td colspan="11" class="ac">該当するデータが見つかりません。</td>
+      </tr>
+  <% else %>
+      <% @users.each do |user| %>
+          <tr>
+            <td><%= user.id %></td>
+            <td><%= user.company_name %></td>
+            <td><%= user.name %></td>
+            <td><%= user.login %></td>
+            <td><%= user.email %></td>
+            <td><%= user.tel %> </td>
+            <td><%= user.skype_id %></td>
+            <td class="action">
+              <%= link_to "メーセージが送信", {:controller => "/admin/user",
+                                       :action => 'send_user_message',
+                                       :user_id => @user.id, :friend_id => user.id}, :target => '_blank' %>|
+              <%#= link_to_remote("新规任務",  { :update => 'tabWrap',
+                                            :url => { :id => params[:id],:tab => 'user_create_new_task' },
+                                            :loading => "show_ajax(this,'#{params[:id]}','user_create_new_task')" }) %>
+              |
+              <%= link_to "削除", {:controller => "/admin/user",
+                                 :action => 'contact_delete',
+                                 :user_id => user.id, :friend_id => @user.id}, :confirm => "削除してもよろしいでしょうか？" %>
+            </td>
+          </tr>
+      <% end %>
+  <% end %>
+</table>
+

@@ -1,0 +1,105 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <%= stylesheet_link_tag "admin/layout" %>
+    <%= stylesheet_link_tag "admin/calendar" %>
+    <%= stylesheet_link_tag "admin/shadowbox" %>
+    <%= stylesheet_link_tag "admin/green" %>
+    <%= stylesheet_link_tag "admin/pink" %>
+    <%= stylesheet_link_tag "admin/blue" %>
+    <%= stylesheet_link_tag "jquery-ui-timepicker" %>
+    <%#= stylesheet_link_tag    "application", :media => "all" %>
+    <%= javascript_include_tag :defaults %>
+    <%= javascript_include_tag 'jquery-ui-1.10.3.custom.min' %>
+    <%= csrf_meta_tags %>
+    <%= javascript_include_tag 'admin/application' %>
+    <%#= javascript_include_tag 'admin/calendar_date_select/calendar_date_select' %>
+    <%#= javascript_include_tag 'admin/calendar_date_select/format_my_type' %>
+    <%#3= javascript_include_tag 'admin/calendar_date_select/locale/jp' %>
+    <%#= javascript_include_tag 'admin/ajaxzip2/ajaxzip2/ajaxzip2' %>
+    <%#= stylesheet_link_tag "admin/calendar" %>
+    <%= javascript_include_tag 'admin/common' %>
+    <%= javascript_include_tag 'jQuery-Timepicker-Addon-master/jquery-ui-timepicker-addon.js' %>
+    <!--script type="text/javascript">
+        var CKEDITOR_BASEPATH = '/ckeditor/';
+    </script-->
+    <%#= javascript_include_tag 'ckeditor/ckeditor' %>
+    <script type="text/javascript">
+        //解决ie 中， image label无效的问题
+        if(navigator.userAgent.indexOf("MSIE")>0) {
+            document.observe('click', function(e) {
+                if(e.findElement('img')){
+                    var that = $(e.target);
+                    var par = that.up(0);
+                    //判断一定是label包裹的img标签被点击
+                    if(par.nodeName == 'LABEL'){
+                        var input_tag = $(that).previous(0);
+                        var check_attr = input_tag.getAttribute("checked");
+                        if(check_attr){
+                            $(input_tag).removeAttr("checked");
+                        }else{
+                            $(input_tag).attr("checked", "checked");
+                        }
+                    }
+                }
+            });
+        }
+        function change_tr(val){
+            if(val ==1)
+            {
+                $("#school").attr('style', '');
+                $("social2").attr('style', 'display:none');
+                $("social3").attr('style', 'display:none');
+            }
+            else{
+                $("school").attr('style', 'display:none');
+                $("social2").attr('style', '');
+                $("social3").attr('style', '');
+            }
+
+        }
+        // preload
+        //add by zyc 20110707
+        function preload(page_name){
+            var img01 = new Image();
+            var img02 = new Image();
+            var img03 = new Image();
+            var img04 = new Image();
+            var img05 = new Image();
+            var img06 = new Image();
+            var img07 = new Image();
+            var img08 = new Image();
+            var img09 = new Image();
+            var img10 = new Image();
+            var img11 = new Image();
+            var img12 = new Image();
+            img01.src = "/admin/images/common/nav_course_on.jpg";
+            img02.src = "/admin/images/common/nav_mater_on.jpg";
+            img03.src = "/admin/images/common/nav_test_on.jpg";
+            img04.src = "/admin/images/common/nav_live_on.jpg";
+            img05.src = "/admin/images/common/nav_lib_on.jpg";
+            img06.src = "/admin/images/common/nav_home_on.jpg";
+            img07.src = "/admin/images/common/nav_stud_on.jpg";
+            img08.src = "/admin/images/common/nav_order_on.jpg";
+            img09.src = "/admin/images/common/nav_app_on.jpg";
+            img10.src = "/admin/images/common/nav_master_on.jpg";
+            img11.src = "/admin/images/common/nav_mess_on.jpg";
+            img12.src = "/admin/images/common/nav_freepage_on.jpg";
+        }
+    </script>
+  </head>
+  <body onload="if (document.images)preload();">
+    <div id="wrap">
+      <div id="head"><%= render :partial => "/layouts/admin_navi" %></div>
+	  <div id="content">
+        <%= render :partial=> "/layouts/messages"%>
+        <%= yield %>
+      </div>
+      <div id="footer">
+        Copyright (C) 2013 With us Corporation. All rights reserved.
+      </div>
+    </div>
+  </body>
+</html>

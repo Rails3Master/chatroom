@@ -1,0 +1,28 @@
+<iframe name="iframe" style="display:none;" width="800px" height="400px">
+</iframe>
+<div id="error_messages"></div>
+<% form_for :user, :url => {:controller => "admin/user", :action => :edit, :id => @user.id}, :html => {:multipart => true, :target => 'iframe'} do |u| %>
+    <div class="pgtitle">
+      <h2 class="h2_title">ユーザー編集</h2>
+
+      <div class="btnbar">
+        <%= button_to_function '保存', "this.form.action='#{url_for :action => 'edit'}';
+      this.form.target='_self';this.form.submit()" %>
+        <%= button_to_function "戻る", :onclick => "window.location.href='/admin/user/list'" %>
+      </div>
+      <hr class="cb"/>
+    </div>
+    <p class="mb10">この画面にて、ユーザーのプロフィール及び保護者のパスワード等を編集することができます。</p>
+
+    <%= render :partial => 'info_form', :locals => {:u => u} %>
+
+    <div class="btnbar">
+      <%= button_to_function '保存', "this.form.action='#{url_for :action => 'edit'}';
+      this.form.target='_self';this.form.submit()" %>
+      <%= button_to_function "戻る", :onclick => "window.location.href='/admin/user/list'" %>
+    </div>
+    <p align="right"><a href="#wrap"><img src="/admin/images/tri_top.jpg" alt=""/>上へ</a></p>
+<% end %>
+<script type="text/javascript">
+    $('show_user').style.display = '';
+</script>

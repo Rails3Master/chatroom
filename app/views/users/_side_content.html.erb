@@ -1,0 +1,96 @@
+<div class="sideContentMenu">
+<h2 id="_sideContentTitle" class="contentHl sideContentHl"><span id="_sideContentTitleText">聊天列表</span></h2>
+<div id="_addButton" role="button" aria-label="新建群聊,添加联系人" class="sideTitleBtn button btnLarge btnIconDouble"
+     onclick="addButton()" >
+  <span class="icoSizeLarge icoFontAddBtn"></span>
+  <span class="icoFontTriangleDown"></span>
+</div>
+<div id="_chatFilterMenu" class="chatFilterMenu clearfix">
+  <div id="_sideChatMoveMyChat" class="button" role="button" aria-label="打开我的聊天记录">
+    <span class="icoSizeLarge icoFontHome"></span>
+  </div>
+  <ul id="_chatFilterList" style="" class="cwTextUnselectable termList btnNavList _cwBB" role="menu">
+    <li role="menuitemradio" class="_cwBBButton button" data-cwui-bb-idx="0" aria-label="显示未读聊天记录">
+      <span class="icoSizeLarge icoFontActionUnread"></span>
+      <p id="_chatUnreadStatus" class="chatListUnreadNum" style="">1</p>
+    </li>
+    <li role="menuitemradio" class="_cwBBButton button" data-cwui-bb-idx="1" aria-label="只显示自己的聊天内容">
+      <span class="icoSizeLarge icoFontTo"></span>
+      <p id="_chatToUnreadStatus" class="chatListUnreadNum" style="display: none"></p>
+    </li>
+    <li role="menuitemradio" class="_cwBBButton button" data-cwui-bb-idx="2" aria-label="只显示自己任务的聊天信息">
+      <span class="icoSizeLarge icoFontActionTask"></span>
+      <p id="_chatTaskStatus" class="chatListUnreadNum" style="display: none"></p>
+    </li>
+  </ul>
+  <div id="_chatCategory" class="button" role="button" aria-label="选择类别">
+    <span class="icoSizeLarge icoFontCategory"></span>
+  </div>
+</div>
+
+<!-- .chatFilterMenu -->
+<div id="_roomListArea" class="_overflow chatRoomListArea">
+<div id="_categoryDisplay" class="chatCategoryTitle clearfix" style="display:none">
+  <span id="_categoryDisplayTitle" class="categoryDisplayTitle"></span>
+  <span class="linkIconStatus"><span id="_categoryDisplayCancel" class="icoFontCancel icoSizeLarge icCancel" role="button" aria-label="取消"></span></span>
+</div>
+<ul id="_roomListItems" role="list" class="menuListTitle cwTextUnselectable">
+  <%if @groups.present?%>
+      <% @groups.each do |group|%>
+        <li role="listitem" aria-label="<%=group.name %>" class="_roomLink _room roomUnread" data-rid="4961293"
+            onclick="menuListTitleSelected($(this),<%=group.id%>,'group')">
+          <div class="roomIcon">
+            <img class="avatarMedium" src="/user/images/37486.rsz.jpg">
+          </div>
+          <div class="chatListMeta">
+            <p class="chatListTitleArea autotrim"><%=group.name %></p>
+            <ul class="incomplete">
+              <li role="listitem" class="_unreadBadge unread">
+                <span class="icoFontActionUnread"></span>5
+              </li>
+            </ul>
+          </div>
+          <div class="chatListPin">
+            <span class="_pin _pinRid4961293 ico19PinOn"></span>
+          </div>
+        </li>
+      <%end%>
+  <%end%>
+   <%if @users.present?%>
+      <% @users.each do |user|%>
+        <li role="listitem" aria-label="<%=user.name %>" class="_roomLink _room"  onclick="menuListTitleSelected($(this),<%=user.id %>,'user')">
+          <div class="roomIcon">
+            <% if user.photo_path.present? %>
+                <%= image_tag(user.photo_path) %>
+            <% else %>
+                <img class=" avatarMedium _avatar _avatarAid548300" data-aid="548300" src="/user/images/117951.rsz.jpg">
+            <% end %>
+          </div>
+          <div class="chatListMeta">
+            <p class="chatListTitleArea chatListTitleNoLabel">
+              <span class="_nameAid548300"><%=user.name %></span>
+            </p>
+          </div>
+          <div class="chatListPin chatListPinOff">
+            <span class="_pin _pinRid6321810 ico19PinOff"></span>
+          </div>
+        </li>
+      <%end%>
+    <%end%>
+</ul>
+<div id="_chatListEmptyArea" style="display: none;">
+  <div id="_chatListUnreadEmpty" class="_chatListEmpty chatListEmptyArea" style="display: none;">
+    <img src="/user/images/img_unread_empty.png" alt="">
+    <p>无未读留言</p>
+  </div>
+  <div id="_chatListToEmpty" class="_chatListEmpty chatListEmptyArea" style="display: none;">
+    <img src="/user/images/img_to_empty.png" alt="">
+    <p>聊天记录中没有自己的留言</p>
+  </div>
+  <div id="_chatListTaskEmpty" class="_chatListEmpty chatListEmptyArea" style="display: none;">
+    <img src="/user/images/img_side_task_empty.png" alt="">
+    <p>没有显示自己任务的聊天记录</p>
+  </div>
+</div>
+</div>
+</div>

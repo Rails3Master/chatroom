@@ -1,0 +1,27 @@
+<h2>システムログイン</h2>
+<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+    <div class="innerbox">
+      <table cellspacing="8">
+        <tr>
+          <th>メルアド：</th>
+          <td>
+            <%= f.text_field 'email', :class => "W260", :autofocus => true %>
+          </td>
+        </tr>
+        <tr>
+          <th>パスワード：</th>
+          <td><%= f.password_field 'password', :class => 'W260' %></td>
+        </tr>
+        <tr>
+          <td colspan="2" align="center">
+            <div style="position: relative;">
+              <%= submit_tag '', :class => "btn_login", :onclick => "this.disabled = true;this.form.submit()"%>
+              <span style="position:absolute;right:0px;top:20px;">
+                       <!--<a id="ssl" href=<%#= "https://#{request.host()}#{request.path()}"%>>SSLでログイン</a>-->
+                      </span>
+            </div>
+          </td>
+        </tr>
+      </table>
+    </div>
+<%end%>
